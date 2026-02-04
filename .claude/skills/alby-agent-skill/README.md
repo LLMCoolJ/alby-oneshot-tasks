@@ -6,6 +6,8 @@ Before you start, try **[Alby Sandbox](https://sandbox.albylabs.com)** to see wh
 
 This repository contains an [agent skill](https://agentskills.io/specification) that helps agents use the [Alby JS SDK](https://github.com/getAlby/js-sdk) and [Alby Lightning Tools](https://github.com/getAlby/js-lightning-tools).
 
+> Also check out our **[Wallet CLI skill](https://github.com/getAlby/alby-cli-skill)**
+
 ## Getting Started
 
 ### 🚀 Install with single command

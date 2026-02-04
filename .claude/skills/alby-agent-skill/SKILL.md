@@ -1,6 +1,10 @@
 ---
 name: alby-bitcoin-payments-agent-skill
-description: Add bitcoin lightning wallet capabilities to your app using Nostr Wallet Connect (NIP-47) and LNURL. Send and receive payments, handle payment notifications, fetch wallet balance and transaction list, do bitcoin to fiat currency conversions, query lightning addresses, conditionally settle payments (HOLD invoices), parse BOLT-11 invoices, verify payment preimages.
+description: Add bitcoin lightning wallet capabilities to your app using Nostr Wallet Connect (NIP-47), LNURL, and WebLN. Send and receive payments, handle payment notifications, fetch wallet balance and transaction list, do bitcoin to fiat currency conversions, query lightning addresses, conditionally settle payments (HOLD invoices), parse BOLT-11 invoices, verify payment preimages.
+license: Apache-2.0
+metadata:
+  author: getAlby
+  version: "1.2.0"
 ---
 
 # Alby Bitcoin Payments Agent Skill
@@ -11,6 +15,7 @@ Use this skill to understand how to build apps that require bitcoin lightning wa
 
 - [NWC Client: Interact with a wallet to do things like sending and receive payments, listen to payment notifications, fetch balance and transaction list and wallet info](./references/nwc-client/nwc-client.md)
 - [Lightning Tools: Request invoices from a lightning address, parse BOLT-11 invoices, verify a preimage for a BOLT-11 invoice, LNURL-Verify, do bitcoin <-> fiat conversions](./references/lightning-tools/lightning-tools.md)
+- [Bitcoin Connect: Browser-only UI components for connecting wallets and accepting payments in React, Vue, or pure HTML web apps](./references/bitcoin-connect/bitcoin-connect.md)
 
 ## Prefer Typescript
 
@@ -26,6 +31,8 @@ Based on what functionality you require, read the relevant typings:
 
 - [NWC Client](./references/nwc-client/nwc.d.ts)
 - [Lightning Tools](./references/lightning-tools/index.d.ts)
+- [Bitcoin Connect](./references/bitcoin-connect/bundle.d.ts)
+- [Bitcoin Connect React](./references/bitcoin-connect/react.bundle.d.ts)
 
 ## Testing Wallets
 
