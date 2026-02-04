@@ -600,8 +600,8 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { useLightningAddressPayment } from '@/hooks/useLightningAddressPayment';
 
-// Mock LightningAddress
-vi.mock('@getalby/lightning-tools', () => ({
+// Mock LightningAddress (must match import path)
+vi.mock('@getalby/lightning-tools/lnurl', () => ({
   LightningAddress: vi.fn().mockImplementation(() => ({
     address: 'test@getalby.com',
     fetch: vi.fn().mockResolvedValue(undefined),

@@ -2,23 +2,23 @@
 
 ## Status Legend
 - `pending` - Not yet reviewed
-- `in_progress` - Currently being aligned (fixes were made this round)
-- `aligned` - Verified consistent with PRD.md and non-scenario specs
+- `fixing` - Currently being aligned (fixes were made this round)
+- `no fixes` - Checked and nothing to fix
 
 ## Status Update Rules
-**IMPORTANT:** Only change status to `aligned` if NO work was done (no edits, no commits).
+**IMPORTANT:** Only change status to `no fixes` if NO work was done (no edits, no commits).
 
-- If you made ANY changes/commits this round → keep as `in_progress`
-- If you reviewed and found nothing to fix → mark as `aligned`
+- If you made ANY changes/commits this round → keep as `fixing`
+- If you reviewed and found nothing to fix → mark as `no fixes`
 
-The next run of the alignment prompt will verify `in_progress` specs and mark them `aligned` if no further changes are needed.
+The next run of the alignment prompt will verify `fixing` specs and mark them `no fixes` if no further changes are needed.
 
 ## Scenario Specs
 
 | Spec | Status | Notes |
 |------|--------|-------|
-| 06-scenario-1-simple-payment.md | in_progress | Fixed decodeInvoice import path |
-| 07-scenario-2-lightning-address.md | pending | |
+| 06-scenario-1-simple-payment.md | no fixes | Verified aligned with reference specs |
+| 07-scenario-2-lightning-address.md | fixing | Test mock import path inconsistency |
 | 08-scenario-3-notifications.md | pending | |
 | 09-scenario-4-hold-invoice.md | pending | |
 | 10-scenario-5-proof-of-payment.md | pending | |
