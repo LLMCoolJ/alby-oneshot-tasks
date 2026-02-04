@@ -1,0 +1,28 @@
+{
+  "status": "SUCCESS",
+  "summary": "Created 5 test files for spec 05-layout.md covering Layout, Sidebar, ScenarioPage, TransactionLog components and useTransactionLog hook. All 139 tests pass successfully.",
+  "test_files_created": [
+    "tests/unit/components/layout/Layout.test.tsx",
+    "tests/unit/components/layout/Sidebar.test.tsx",
+    "tests/unit/components/layout/ScenarioPage.test.tsx",
+    "tests/unit/components/transaction/TransactionLog.test.tsx",
+    "tests/unit/hooks/useTransactionLog.test.ts"
+  ],
+  "test_count": 139,
+  "coverage_areas": [
+    "component rendering",
+    "mobile menu interactions",
+    "sidebar open/close state",
+    "navigation link rendering",
+    "active route highlighting",
+    "external links with proper attributes",
+    "overlay behavior",
+    "transaction log empty state",
+    "log entry rendering",
+    "badge variant mapping",
+    "hook state management",
+    "addLog function behavior",
+    "clearLogs function behavior",
+    "entry ordering (newest first)"
+  ]
+}

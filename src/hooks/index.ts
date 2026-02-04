@@ -1,10 +1,9 @@
 /**
  * Hooks Index
- * Spec: 04-wallet-context.md
+ * Spec: 04-wallet-context.md + 05-layout.md
  *
- * Export all hooks from spec 04
- * NOTE: Only export hooks that exist in spec 04
- * Later specs will add: useTransactionLog, useLightningAddressPayment, useNotifications, useZap
+ * Export all hooks from spec 04 and 05
+ * NOTE: Later specs will add: useLightningAddressPayment, useNotifications, useZap
  */
 
 export { useWallet } from './useWallet';
@@ -15,3 +14,6 @@ export { useInvoice } from './useInvoice';
 export { usePayment } from './usePayment';
 export { useBudget } from './useBudget';
 export { useFiatRate } from './useFiatRate';
+
+// Spec 05: Layout hooks
+export { useTransactionLog } from './useTransactionLog';

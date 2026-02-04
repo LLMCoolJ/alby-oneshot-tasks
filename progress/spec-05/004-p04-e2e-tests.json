@@ -1,0 +1,22 @@
+{
+  "status": "SUCCESS",
+  "summary": "Created comprehensive E2E tests for the layout spec covering desktop and mobile layouts, navigation between scenarios, responsive sidebar behavior, and external link attributes.",
+  "e2e_files_created": [
+    "tests/e2e/05-layout.spec.ts"
+  ],
+  "screenshots_will_capture": [
+    "tests/e2e/screenshots/05-layout-desktop.png",
+    "tests/e2e/screenshots/05-layout-mobile-closed.png",
+    "tests/e2e/screenshots/05-layout-mobile-open.png"
+  ],
+  "flows_tested": [
+    "Desktop layout displays sidebar with all 8 scenario links",
+    "Navigation between scenarios",
+    "Active scenario link is highlighted",
+    "External links have target=_blank and rel=noopener noreferrer",
+    "Mobile header shows menu button and Testnet badge",
+    "Mobile sidebar opens/closes properly",
+    "Mobile sidebar closes on overlay click",
+    "Responsive behavior on viewport resize"
+  ]
+}
