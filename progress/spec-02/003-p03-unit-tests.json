@@ -1,0 +1,7 @@
+{
+  "status": "SUCCESS",
+  "summary": "All tests match spec requirements. 10 tests covering type guards (isValidNwcUrl, isLightningAddress, isConnectedWallet, isSettledTransaction) and constants (unit conversions, payment limits).",
+  "test_files_created": [],
+  "test_count": 10,
+  "coverage_areas": ["type guards", "constants"]
+}
