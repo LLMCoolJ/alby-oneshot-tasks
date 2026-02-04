@@ -58,7 +58,7 @@ Demonstrate subscribing to payment notifications and receiving real-time updates
 
 ## Page Component
 
-**File**: `src/pages/3-Notifications.tsx`
+**File**: `src/pages/3-Notifications/Notifications.tsx`
 
 ```typescript
 import { ScenarioPage } from '@/components/layout/ScenarioPage';
