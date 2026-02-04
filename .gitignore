@@ -42,7 +42,13 @@ test-results
 # TypeScript build outputs (config files)
 vite.config.d.ts
 vite.config.js
+vitest.config.d.ts
+vitest.config.js
+playwright.config.d.ts
+playwright.config.js
 tsconfig.tsbuildinfo
+server/**/*.js
+server/**/*.d.ts
 
 # Playwright
 playwright-report
