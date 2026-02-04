@@ -288,7 +288,7 @@ export function InvoiceDisplay({ invoice, onReset }: InvoiceDisplayProps) {
 import { useState, useEffect } from 'react';
 import { Button, Input } from '@/components/ui';
 import { usePayment } from '@/hooks';
-import { decodeInvoice } from '@getalby/lightning-tools/bolt11';
+import { decodeInvoice } from '@getalby/lightning-tools';
 import type { PaymentResult } from '@/types';
 
 interface PayInvoiceFormProps {
