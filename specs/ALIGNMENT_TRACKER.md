@@ -24,7 +24,7 @@ The next run of the alignment prompt will verify `fixing` specs and mark them `n
 | 10-scenario-5-proof-of-payment.md | no fixes | Verified aligned with reference specs |
 | 11-scenario-6-transaction-history.md | no fixes | Verified aligned with reference specs |
 | 12-scenario-7-nostr-zap.md | no fixes | Verified aligned with reference specs |
-| 13-scenario-8-fiat-conversion.md | fixing | |
+| 13-scenario-8-fiat-conversion.md | no fixes | Verified aligned with reference specs |
 
 ## Reference Documents
 - PRD.md
