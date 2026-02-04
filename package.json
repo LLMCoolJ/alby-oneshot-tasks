@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@getalby/lightning-tools": "^6.1.0",
+    "@getalby/sdk": "^7.0.0"
+  }
+}

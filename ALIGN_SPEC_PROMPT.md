@@ -24,11 +24,11 @@ Read the code into context and download the libraries to check for code consiste
 ## Prompt
 
 ```
-Check specs/ALIGNMENT_TRACKER.md and find the first scenario spec with status "in_progress" or "pending".
+Check specs/ALIGNMENT_TRACKER.md and find the first scenario spec with status "fixing" or "pending".
 
-If "in_progress": Continue working on that spec.
-If all "pending": Mark the first pending spec as "in_progress" and begin.
-If all "aligned": Report "All scenario specs are aligned!" and stop.
+If "fixing": Continue working on that spec.
+If all "pending": Mark the first pending spec as "fixing" and begin.
+If all "no fixes": Report "All scenario specs are aligned!" and stop.
 
 For the target spec:
 
@@ -45,7 +45,7 @@ For the target spec:
 
 2. READ the target scenario spec fully.
 
-3. READ any scenario specs already marked "aligned" in the tracker.
+3. READ any scenario specs already marked "no fixes" in the tracker.
 
 4. CHECK for inconsistencies:
    - Type names/signatures vs specs/02-shared-types.md
@@ -68,8 +68,8 @@ For the target spec:
    - Commit with message: "align: [spec name] with reference specs"
 
 7. Update ALIGNMENT_TRACKER.md:
-   - If you did work in this round: keep "in_progress"
-   - If there was nothing to do in this round: mark "aligned"
+   - If you did work in this round: keep "fixing"
+   - If there was nothing to do in this round: mark "no fixes"
 
 Stop after ONE alignment pass. User will re-run for continued work.
 ```
@@ -80,4 +80,4 @@ Stop after ONE alignment pass. User will re-run for continued work.
 
 1. Copy the prompt above
 2. Paste into Claude
-3. Repeat until tracker shows all "aligned"
+3. Repeat until tracker shows all "no fixes"
