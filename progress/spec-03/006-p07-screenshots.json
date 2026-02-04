@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "summary": "No screenshots to review - spec 03 is a shared components spec with no dedicated route or E2E tests. Visual testing will occur when scenario pages use these components.",
+  "screenshots_reviewed": 0,
+  "visual_issues": [],
+  "js_errors": [],
+  "all_clear": true
+}
