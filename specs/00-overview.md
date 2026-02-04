@@ -28,7 +28,7 @@ This skill provides authoritative documentation for NWC (NIP-47), LNURL, `@getal
 | Styling | Tailwind CSS | ^3.4 |
 | Backend | Express.js | ^4.21 |
 | Lightning SDK | @getalby/sdk | ^7.0.0 |
-| Lightning Tools | @getalby/lightning-tools | ^6.0.0 |
+| Lightning Tools | @getalby/lightning-tools | ^6.1.0 |
 | Testing | Vitest | ^2.1 |
 | Testing Library | @testing-library/react | ^16.0 |
 | E2E Testing | Playwright | ^1.48 |

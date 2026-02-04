@@ -13,6 +13,25 @@ Define all TypeScript types and interfaces used across the application, ensuring
 
 `src/types/index.ts`
 
+## Unit Convention Reference
+
+Understanding units across the Alby SDK ecosystem is critical to avoid bugs:
+
+| Library | Import Path | Unit | Notes |
+|---------|-------------|------|-------|
+| NWC Client | `@getalby/sdk/nwc` | **millisats** | 1 sat = 1,000 millisats |
+| Lightning Tools | `@getalby/lightning-tools/*` | **sats** | All functions use satoshis |
+| WebLN / Bitcoin Connect | `@getalby/bitcoin-connect` | **sats** | WebLN standard |
+
+**Conversion:**
+```typescript
+const MILLISATS_PER_SAT = 1000;
+const toSats = (millisats: number) => Math.floor(millisats / MILLISATS_PER_SAT);
+const toMillisats = (sats: number) => sats * MILLISATS_PER_SAT;
+```
+
+---
+
 ## Type Definitions
 
 ### Wallet Types
@@ -399,6 +418,97 @@ export interface PaginationInfo {
 }
 ```
 
+### NWC Error Types
+
+The SDK exports specific error classes for granular error handling:
+
+```typescript
+import {
+  Nip47Error,
+  Nip47WalletError,
+  Nip47NetworkError,
+  Nip47TimeoutError,
+  Nip47PublishTimeoutError,
+  Nip47ReplyTimeoutError,
+  Nip47PublishError,
+  Nip47ResponseDecodingError,
+  Nip47ResponseValidationError,
+  Nip47UnexpectedResponseError,
+} from '@getalby/sdk/nwc';
+
+/**
+ * Base NWC error - all NWC errors extend this
+ */
+// Nip47Error { message: string; code: string }
+
+/**
+ * Wallet returned an error response (e.g., insufficient_balance, payment_failed)
+ * See NIP-47 error codes: https://github.com/nostr-protocol/nips/blob/master/47.md#error-codes
+ */
+// Nip47WalletError extends Nip47Error
+
+/**
+ * Network/connection errors
+ */
+// Nip47NetworkError extends Nip47Error
+
+/**
+ * Timeout errors (base class)
+ */
+// Nip47TimeoutError extends Nip47Error
+
+/**
+ * Timed out waiting for relay to accept our message
+ */
+// Nip47PublishTimeoutError extends Nip47TimeoutError
+
+/**
+ * Timed out waiting for wallet response
+ */
+// Nip47ReplyTimeoutError extends Nip47TimeoutError
+```
+
+#### Common NIP-47 Error Codes
+
+| Code | Description |
+|------|-------------|
+| `RATE_LIMITED` | Too many requests |
+| `NOT_IMPLEMENTED` | Method not supported by wallet |
+| `INSUFFICIENT_BALANCE` | Not enough funds |
+| `PAYMENT_FAILED` | Payment could not be completed |
+| `NOT_FOUND` | Invoice/transaction not found |
+| `QUOTA_EXCEEDED` | Budget limit reached |
+| `RESTRICTED` | Operation not allowed |
+| `UNAUTHORIZED` | Invalid credentials |
+| `INTERNAL` | Wallet internal error |
+
+#### Error Handling Example
+
+```typescript
+import { Nip47WalletError, Nip47TimeoutError } from '@getalby/sdk/nwc';
+
+try {
+  await client.payInvoice({ invoice });
+} catch (error) {
+  if (error instanceof Nip47WalletError) {
+    switch (error.code) {
+      case 'INSUFFICIENT_BALANCE':
+        // Show "Not enough funds" message
+        break;
+      case 'PAYMENT_FAILED':
+        // Show "Payment failed, please try again"
+        break;
+      default:
+        // Show generic wallet error
+    }
+  } else if (error instanceof Nip47TimeoutError) {
+    // Show "Connection timed out"
+  } else {
+    // Unknown error
+  }
+}
+```
+
 ### SDK Type Re-exports
 
 ```typescript
@@ -408,15 +518,34 @@ export type {
   Nip47PayResponse,
   Nip47GetInfoResponse,
   Nip47GetBalanceResponse,
+  Nip47GetBudgetResponse,
   Nip47Notification,
   Nip47NotificationType,
+  Nip47Method,
+  BudgetRenewalPeriod,
 } from '@getalby/sdk/nwc';
 
+// Re-export error classes for error handling
+export {
+  Nip47Error,
+  Nip47WalletError,
+  Nip47NetworkError,
+  Nip47TimeoutError,
+  Nip47PublishTimeoutError,
+  Nip47ReplyTimeoutError,
+} from '@getalby/sdk/nwc';
+
+// From bolt11 subpath
+export type { Invoice as LightningInvoice } from '@getalby/lightning-tools/bolt11';
+
+// From lnurl subpath
 export type {
-  Invoice as LightningInvoice,
   LnUrlPayResponse,
   ZapArgs,
-} from '@getalby/lightning-tools';
+} from '@getalby/lightning-tools/lnurl';
+
+// From fiat subpath
+export type { FiatCurrency as FiatCurrencyInfo } from '@getalby/lightning-tools/fiat';
 ```
 
 ## Type Guards

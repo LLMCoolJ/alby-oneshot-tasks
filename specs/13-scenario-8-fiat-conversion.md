@@ -232,7 +232,7 @@ export function CurrencySelector({ currency, onCurrencyChange }: CurrencySelecto
 ```typescript
 import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui';
-import { getFiatValue, getSatoshiValue } from '@getalby/lightning-tools';
+import { getFiatValue, getSatoshiValue } from '@getalby/lightning-tools/fiat';
 import type { FiatCurrency } from '@/types';
 
 interface ConversionCalculatorProps {
@@ -352,7 +352,7 @@ function getCurrencySymbol(currency: FiatCurrency): string {
 
 ```typescript
 import { useEffect, useState } from 'react';
-import { getFiatValue } from '@getalby/lightning-tools';
+import { getFiatValue } from '@getalby/lightning-tools/fiat';
 import type { FiatCurrency } from '@/types';
 
 interface QuickReferenceProps {

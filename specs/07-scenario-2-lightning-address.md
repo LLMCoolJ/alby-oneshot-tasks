@@ -316,7 +316,7 @@ function CheckIcon({ className }: { className?: string }) {
 
 ```typescript
 import { useState, useCallback } from 'react';
-import { LightningAddress } from '@getalby/lightning-tools';
+import { LightningAddress } from '@getalby/lightning-tools/lnurl';
 import { useNWCClient } from './useNWCClient';
 import { useWalletActions } from './useWalletActions';
 import type { WalletId, LightningAddressPayment, PaymentResult } from '@/types';

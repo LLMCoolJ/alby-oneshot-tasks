@@ -648,7 +648,7 @@ export function useHoldInvoice(walletId: WalletId): UseHoldInvoiceReturn {
 Uses SDK utilities where available. Generation uses Web Crypto API (platform crypto, not "rolling our own").
 
 ```typescript
-import { fromHexString, Invoice } from '@getalby/lightning-tools';
+import { fromHexString, Invoice } from '@getalby/lightning-tools/bolt11';
 
 // Re-export SDK utility for hex decoding
 export { fromHexString };

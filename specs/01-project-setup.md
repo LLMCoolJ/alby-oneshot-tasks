@@ -19,7 +19,7 @@ Define the project initialization, configuration files, and development environm
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
     "@getalby/sdk": "^7.0.0",
-    "@getalby/lightning-tools": "^6.0.0",
+    "@getalby/lightning-tools": "^6.1.0",
     "qrcode.react": "^4.1.0",
     "express": "^4.21.1",
     "cors": "^2.8.5"
@@ -429,7 +429,7 @@ vi.stubGlobal('WebSocket', vi.fn().mockImplementation(() => ({
 # Create directory structure
 mkdir -p src/{components/{layout,wallet,transaction,ui},pages,hooks,context,lib,types}
 mkdir -p server/routes
-mkdir -p tests/{unit/{components,hooks,lib},integration,e2e}
+mkdir -p tests/{unit/{components,hooks,lib},integration,e2e,utils}
 mkdir -p public
 
 # Create placeholder files
@@ -440,6 +440,158 @@ touch server/routes/demo.ts
 
 echo "Project structure created successfully!"
 ```
+
+---
+
+## Test Wallet Faucet
+
+For E2E and integration testing, use the NWC test faucet at `https://faucet.nwc.dev` to create throw-away wallets. This enables true end-to-end testing against real NWC infrastructure without mocks.
+
+### Faucet Features
+
+- **Instant wallet creation** via single POST request
+- **Pre-funded wallets** with configurable balance (in sats)
+- **Full NWC support** including notifications and hold invoices
+- **Isolated test environment** - wallets can transact with each other but not external Lightning network
+
+### Creating a Test Wallet
+
+```bash
+# Create a wallet with 10,000 sats
+curl -X POST "https://faucet.nwc.dev?balance=10000"
+
+# Response: NWC connection string (plaintext)
+# nostr+walletconnect://pubkey?relay=wss://...&secret=...&lud16=nwcXXXXXX@faucet.nwc.dev
+```
+
+### Topping Up a Wallet
+
+```bash
+# Add 1,000 sats to existing wallet (use the username from lud16)
+curl -X POST "https://faucet.nwc.dev/wallets/nwcXXXXXX/topup?amount=1000"
+```
+
+### Test Wallet Utilities
+
+**File**: `tests/utils/test-wallet.ts`
+
+```typescript
+/**
+ * Creates a throw-away test wallet from the NWC faucet.
+ * Each test can create fresh wallets for reproducible results.
+ */
+export async function createTestWallet(
+  options: { balance?: number; retries?: number } = {}
+): Promise<{ nwcUrl: string; lightningAddress: string }> {
+  const { balance = 10000, retries = 3 } = options;
+
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(
+        `https://faucet.nwc.dev?balance=${balance}`,
+        { method: 'POST' }
+      );
+
+      if (!response.ok) {
+        if (i < retries - 1) {
+          await new Promise((r) => setTimeout(r, 1000));
+          continue;
+        }
+        throw new Error(
+          `Faucet request failed: ${response.status} ${await response.text()}`
+        );
+      }
+
+      const nwcUrl = (await response.text()).trim();
+
+      // Extract lightning address from lud16 parameter
+      const lud16Match = nwcUrl.match(/lud16=([^&\s]+)/);
+      if (!lud16Match) {
+        throw new Error(`No lud16 found in NWC URL: ${nwcUrl}`);
+      }
+
+      const lightningAddress = decodeURIComponent(lud16Match[1]);
+
+      return { nwcUrl, lightningAddress };
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      await new Promise((r) => setTimeout(r, 1000));
+    }
+  }
+
+  throw new Error('Failed to create test wallet after retries');
+}
+
+/**
+ * Top up an existing test wallet
+ */
+export async function topupTestWallet(
+  lightningAddress: string,
+  amount: number = 1000
+): Promise<void> {
+  const username = lightningAddress.split('@')[0];
+
+  const response = await fetch(
+    `https://faucet.nwc.dev/wallets/${username}/topup?amount=${amount}`,
+    { method: 'POST' }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Topup failed: ${response.status} ${await response.text()}`);
+  }
+}
+
+/**
+ * Creates a pair of test wallets (Alice and Bob) for two-party scenarios
+ */
+export async function createTestWalletPair(
+  options: { aliceBalance?: number; bobBalance?: number } = {}
+): Promise<{
+  alice: { nwcUrl: string; lightningAddress: string };
+  bob: { nwcUrl: string; lightningAddress: string };
+}> {
+  const { aliceBalance = 10000, bobBalance = 10000 } = options;
+
+  const [alice, bob] = await Promise.all([
+    createTestWallet({ balance: aliceBalance }),
+    createTestWallet({ balance: bobBalance }),
+  ]);
+
+  return { alice, bob };
+}
+```
+
+### Usage in Tests
+
+```typescript
+// Playwright E2E test
+import { createTestWalletPair } from '../utils/test-wallet';
+
+test('Alice pays Bob', async ({ page }) => {
+  const { alice, bob } = await createTestWalletPair();
+  // Use alice.nwcUrl and bob.nwcUrl in your test...
+});
+
+// Vitest integration test
+import { NWCClient } from '@getalby/sdk/nwc';
+import { createTestWallet } from '../utils/test-wallet';
+
+it('creates and pays invoice', async () => {
+  const wallet = await createTestWallet({ balance: 10000 });
+  const client = new NWCClient({ nostrWalletConnectUrl: wallet.nwcUrl });
+  // Test with real NWC client...
+  client.close();
+}, 30000);
+```
+
+### Best Practices
+
+1. **Fresh wallets per test** - Create new wallets for each test to ensure reproducibility
+2. **Adequate timeouts** - NWC operations involve network calls; use 30s+ timeouts
+3. **Cleanup** - Close NWC clients after tests to avoid resource leaks
+4. **Parallel safety** - Each test creates its own wallets, so tests can run in parallel
+
+---
 
 ## Test Requirements (TDD)
 

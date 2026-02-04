@@ -281,7 +281,7 @@ export function PayAndProve({ invoice, onPreimageReceived, onLog }: PayAndProveP
 ```typescript
 import { useState, useEffect } from 'react';
 import { Button, Input, Badge, CopyButton } from '@/components/ui';
-import { Invoice } from '@getalby/lightning-tools';
+import { Invoice } from '@getalby/lightning-tools/bolt11';
 import type { Nip47Transaction } from '@getalby/sdk/nwc';
 
 interface PreimageVerifierProps {

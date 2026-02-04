@@ -396,7 +396,7 @@ export function ZapResult({ result, onReset }: ZapResultProps) {
 
 ```typescript
 import { useState, useCallback } from 'react';
-import { LightningAddress } from '@getalby/lightning-tools';
+import { LightningAddress } from '@getalby/lightning-tools/lnurl';
 import { useNWCClient } from './useNWCClient';
 import { useWalletActions } from './useWalletActions';
 import type { WalletId, ZapRequest, PaymentResult } from '@/types';

@@ -129,34 +129,160 @@ describe('Simple Payment Flow', () => {
 
 **Location**: `tests/e2e/`
 
-Test complete user flows in a real browser.
+Test complete user flows in a real browser using test wallet faucet (see [01-project-setup.md](./01-project-setup.md#test-wallet-faucet)).
 
 ```typescript
-// Example: Full payment scenario
-test('Alice pays Bob via invoice', async ({ page }) => {
-  await page.goto('/simple-payment');
+// tests/e2e/simple-payment.spec.ts
+import { test, expect } from '@playwright/test';
+import { createTestWalletPair } from '../utils/test-wallet';
 
-  // Connect wallets
-  await page.fill('[data-testid="alice-nwc-input"]', process.env.TEST_ALICE_NWC);
+test.describe('Simple Payment Flow', () => {
+  test('Alice pays Bob via BOLT-11 invoice', async ({ page }) => {
+    // Create fresh wallets for this test
+    const { alice, bob } = await createTestWalletPair({
+      aliceBalance: 10000,
+      bobBalance: 1000,
+    });
+
+    await page.goto('/simple-payment');
+
+    // Connect Alice's wallet
+    await page.fill('[data-testid="alice-nwc-input"]', alice.nwcUrl);
+    await page.click('[data-testid="alice-connect"]');
+    await expect(page.locator('[data-testid="alice-status"]')).toContainText('Connected');
+
+    // Connect Bob's wallet
+    await page.fill('[data-testid="bob-nwc-input"]', bob.nwcUrl);
+    await page.click('[data-testid="bob-connect"]');
+    await expect(page.locator('[data-testid="bob-status"]')).toContainText('Connected');
+
+    // Bob creates invoice for 100 sats
+    await page.fill('[data-testid="invoice-amount"]', '100');
+    await page.fill('[data-testid="invoice-description"]', 'E2E test payment');
+    await page.click('[data-testid="create-invoice"]');
+
+    // Wait for invoice to appear
+    await expect(page.locator('[data-testid="invoice-qr"]')).toBeVisible();
+    const invoice = await page.locator('[data-testid="invoice-bolt11"]').textContent();
+    expect(invoice).toMatch(/^lnbc/);
+
+    // Alice pays the invoice
+    await page.fill('[data-testid="pay-invoice-input"]', invoice!);
+    await page.click('[data-testid="pay-invoice-button"]');
+
+    // Verify payment success
+    await expect(page.locator('[data-testid="payment-success"]')).toBeVisible({ timeout: 30000 });
+    await expect(page.locator('[data-testid="payment-preimage"]')).toBeVisible();
+  });
+
+  test('Payment fails with insufficient balance', async ({ page }) => {
+    const { alice, bob } = await createTestWalletPair({
+      aliceBalance: 50, // Only 50 sats
+      bobBalance: 1000,
+    });
+
+    await page.goto('/simple-payment');
+
+    // Connect both wallets
+    await page.fill('[data-testid="alice-nwc-input"]', alice.nwcUrl);
+    await page.click('[data-testid="alice-connect"]');
+    await page.fill('[data-testid="bob-nwc-input"]', bob.nwcUrl);
+    await page.click('[data-testid="bob-connect"]');
+
+    // Bob creates invoice for 1000 sats (more than Alice has)
+    await page.fill('[data-testid="invoice-amount"]', '1000');
+    await page.click('[data-testid="create-invoice"]');
+
+    const invoice = await page.locator('[data-testid="invoice-bolt11"]').textContent();
+
+    // Alice attempts to pay
+    await page.fill('[data-testid="pay-invoice-input"]', invoice!);
+    await page.click('[data-testid="pay-invoice-button"]');
+
+    // Verify error message
+    await expect(page.locator('[data-testid="payment-error"]')).toContainText(/insufficient/i);
+  });
+});
+```
+
+```typescript
+// tests/e2e/lightning-address.spec.ts
+import { test, expect } from '@playwright/test';
+import { createTestWalletPair } from '../utils/test-wallet';
+
+test('Alice pays Bob\'s lightning address', async ({ page }) => {
+  const { alice, bob } = await createTestWalletPair();
+
+  await page.goto('/lightning-address');
+
+  // Connect Alice
+  await page.fill('[data-testid="alice-nwc-input"]', alice.nwcUrl);
   await page.click('[data-testid="alice-connect"]');
 
-  await page.fill('[data-testid="bob-nwc-input"]', process.env.TEST_BOB_NWC);
-  await page.click('[data-testid="bob-connect"]');
+  // Enter Bob's lightning address and amount
+  await page.fill('[data-testid="ln-address-input"]', bob.lightningAddress);
+  await page.fill('[data-testid="ln-address-amount"]', '100');
 
-  // Create invoice
-  await page.fill('[data-testid="amount-input"]', '100');
-  await page.click('[data-testid="create-invoice"]');
-
-  // Wait for invoice to appear
-  await expect(page.locator('[data-testid="qr-code"]')).toBeVisible();
-
-  // Copy and pay invoice
-  const invoice = await page.locator('[data-testid="invoice-text"]').textContent();
-  await page.fill('[data-testid="pay-invoice-input"]', invoice);
-  await page.click('[data-testid="pay-invoice"]');
+  // Pay
+  await page.click('[data-testid="ln-address-pay"]');
 
   // Verify success
-  await expect(page.locator('[data-testid="payment-success"]')).toBeVisible();
+  await expect(page.locator('[data-testid="payment-success"]')).toBeVisible({ timeout: 30000 });
+});
+```
+
+### 4. Integration Tests with Real Wallets
+
+For faster feedback than E2E but more realistic than mocks:
+
+```typescript
+// tests/integration/payment-flow.test.ts
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { NWCClient } from '@getalby/sdk/nwc';
+import { createTestWalletPair } from '../utils/test-wallet';
+
+describe('Payment Flow Integration', () => {
+  let alice: { nwcUrl: string; lightningAddress: string };
+  let bob: { nwcUrl: string; lightningAddress: string };
+  let aliceClient: NWCClient;
+  let bobClient: NWCClient;
+
+  beforeAll(async () => {
+    const wallets = await createTestWalletPair();
+    alice = wallets.alice;
+    bob = wallets.bob;
+
+    aliceClient = new NWCClient({ nostrWalletConnectUrl: alice.nwcUrl });
+    bobClient = new NWCClient({ nostrWalletConnectUrl: bob.nwcUrl });
+  }, 30000);
+
+  afterAll(() => {
+    aliceClient?.close();
+    bobClient?.close();
+  });
+
+  it('creates and pays invoice', async () => {
+    // Bob creates invoice
+    const invoice = await bobClient.makeInvoice({
+      amount: 1000, // 1 sat in millisats
+      description: 'Integration test',
+    });
+
+    expect(invoice.invoice).toMatch(/^lnbc/);
+
+    // Alice pays invoice
+    const payment = await aliceClient.payInvoice({
+      invoice: invoice.invoice,
+    });
+
+    expect(payment.preimage).toBeTruthy();
+    expect(payment.preimage).toHaveLength(64);
+  }, 30000);
+
+  it('fetches balance', async () => {
+    const balance = await aliceClient.getBalance();
+    expect(balance.balance).toBeGreaterThan(0);
+  });
 });
 ```
 
@@ -223,10 +349,13 @@ vi.mock('@getalby/sdk/nwc', () => ({
 
 **File**: `tests/mocks/lightning-tools.ts`
 
+Mock each subpath separately to match actual import patterns:
+
 ```typescript
 import { vi } from 'vitest';
 
-vi.mock('@getalby/lightning-tools', () => ({
+// Mock LNURL subpath
+vi.mock('@getalby/lightning-tools/lnurl', () => ({
   LightningAddress: vi.fn().mockImplementation((address: string) => ({
     address,
     fetch: vi.fn().mockResolvedValue(undefined),
@@ -245,20 +374,6 @@ vi.mock('@getalby/lightning-tools', () => ({
       paymentRequest: 'lnbc1000n1zap...',
     }),
   })),
-
-  decodeInvoice: vi.fn().mockImplementation((invoice: string) => ({
-    paymentHash: 'hash123',
-    satoshi: 1000,
-    timestamp: Date.now() / 1000,
-    expiry: 3600,
-    description: 'Test invoice',
-  })),
-
-  getFiatValue: vi.fn().mockResolvedValue(42.00),
-  getSatoshiValue: vi.fn().mockResolvedValue(1000),
-  getFormattedFiatValue: vi.fn().mockResolvedValue('$42.00'),
-  getFiatBtcRate: vi.fn().mockResolvedValue(42000),
-
   generateZapEvent: vi.fn().mockResolvedValue({
     id: 'event123',
     kind: 9734,
@@ -266,6 +381,45 @@ vi.mock('@getalby/lightning-tools', () => ({
     tags: [],
     created_at: Date.now() / 1000,
   }),
+}));
+
+// Mock bolt11 subpath
+vi.mock('@getalby/lightning-tools/bolt11', () => ({
+  Invoice: vi.fn().mockImplementation(({ pr }) => ({
+    paymentRequest: pr,
+    paymentHash: 'hash123',
+    satoshi: 1000,
+    description: 'Test invoice',
+    validatePreimage: vi.fn().mockReturnValue(true),
+    isPaid: vi.fn().mockResolvedValue(false),
+    hasExpired: vi.fn().mockReturnValue(false),
+  })),
+  decodeInvoice: vi.fn().mockImplementation((invoice: string) => ({
+    paymentHash: 'hash123',
+    satoshi: 1000,
+    timestamp: Date.now() / 1000,
+    expiry: 3600,
+    description: 'Test invoice',
+  })),
+  fromHexString: vi.fn().mockImplementation((hex: string) => {
+    const bytes = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < hex.length; i += 2) {
+      bytes[i / 2] = parseInt(hex.slice(i, i + 2), 16);
+    }
+    return bytes;
+  }),
+}));
+
+// Mock fiat subpath
+vi.mock('@getalby/lightning-tools/fiat', () => ({
+  getFiatValue: vi.fn().mockResolvedValue(42.00),
+  getSatoshiValue: vi.fn().mockResolvedValue(1000),
+  getFormattedFiatValue: vi.fn().mockResolvedValue('$42.00'),
+  getFiatBtcRate: vi.fn().mockResolvedValue(42000),
+  getFiatCurrencies: vi.fn().mockResolvedValue([
+    { code: 'USD', name: 'US Dollar', symbol: '$', priority: 1 },
+    { code: 'EUR', name: 'Euro', symbol: '€', priority: 2 },
+  ]),
 }));
 ```
 
@@ -625,5 +779,5 @@ npm run test:e2e -- --ui
 
 ## Related Specifications
 
-- [01-project-setup.md](./01-project-setup.md) - Test configuration
+- [01-project-setup.md](./01-project-setup.md) - Test configuration and test wallet faucet setup
 - All scenario specifications - Include test requirements
