@@ -1,0 +1,27 @@
+{
+  "status": "PARTIAL",
+  "summary": "Unit tests all pass (208/208) but typecheck fails with 5 unused import errors in test files",
+  "typecheck": {
+    "passed": false,
+    "errors": [
+      "tests/unit/components/wallet/BalanceDisplay.test.tsx(6,1): error TS6133: 'React' is declared but its value is never read.",
+      "tests/unit/components/wallet/BalanceDisplay.test.tsx(8,26): error TS6133: 'waitFor' is declared but its value is never read.",
+      "tests/unit/components/wallet/WalletCard.test.tsx(6,1): error TS6133: 'React' is declared but its value is never read.",
+      "tests/unit/components/wallet/WalletConnect.test.tsx(6,1): error TS6133: 'React' is declared but its value is never read.",
+      "tests/unit/components/wallet/WalletConnect.test.tsx(8,26): error TS6133: 'fireEvent' is declared but its value is never read."
+    ]
+  },
+  "unit_tests": {
+    "passed": true,
+    "total": 208,
+    "failed": 0,
+    "errors": []
+  },
+  "e2e_tests": {
+    "passed": true,
+    "total": 0,
+    "failed": 0,
+    "errors": []
+  },
+  "all_passed": false
+}
