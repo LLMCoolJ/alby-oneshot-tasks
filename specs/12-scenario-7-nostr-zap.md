@@ -488,7 +488,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { useZap } from '@/hooks/useZap';
 
-vi.mock('@getalby/lightning-tools', () => ({
+vi.mock('@getalby/lightning-tools/lnurl', () => ({
   LightningAddress: vi.fn().mockImplementation(() => ({
     fetch: vi.fn().mockResolvedValue(undefined),
     zapInvoice: vi.fn().mockResolvedValue({
