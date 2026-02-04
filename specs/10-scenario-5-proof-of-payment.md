@@ -9,7 +9,7 @@ Demonstrate how the preimage returned from a payment can be used as cryptographi
 - [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Basic payment flow
 
 **SDK Dependencies:**
-- `Invoice` class from `@getalby/lightning-tools` - for `validatePreimage()` method
+- `Invoice` class from `@getalby/lightning-tools/bolt11` - for `validatePreimage()` method
 
 ## User Story
 
