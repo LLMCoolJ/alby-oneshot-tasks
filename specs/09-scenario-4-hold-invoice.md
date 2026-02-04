@@ -68,7 +68,7 @@ Demonstrate conditional payments using hold invoices. Alice's payment is locked 
 
 ## Page Component
 
-**File**: `src/pages/4-HoldInvoice/index.tsx`
+**File**: `src/pages/4-HoldInvoice/HoldInvoice.tsx`
 
 ```typescript
 import { useState } from 'react';
@@ -731,20 +731,23 @@ import {
   verifyPreimage,
 } from '@/lib/crypto';
 
-// Mock the Invoice class from lightning-tools
-vi.mock('@getalby/lightning-tools', async () => {
-  const actual = await vi.importActual('@getalby/lightning-tools');
-  return {
-    ...actual,
-    Invoice: vi.fn().mockImplementation(({ pr }) => ({
-      paymentHash: 'mock_payment_hash',
-      // Mock validatePreimage to return true for specific preimage
-      validatePreimage: vi.fn().mockImplementation((preimage: string) => {
-        return preimage === 'valid_preimage_hex';
-      }),
-    })),
-  };
-});
+// Mock the Invoice class from lightning-tools/bolt11 subpath
+vi.mock('@getalby/lightning-tools/bolt11', () => ({
+  fromHexString: vi.fn().mockImplementation((hex: string) => {
+    const bytes = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < hex.length; i += 2) {
+      bytes[i / 2] = parseInt(hex.slice(i, i + 2), 16);
+    }
+    return bytes;
+  }),
+  Invoice: vi.fn().mockImplementation(({ pr }) => ({
+    paymentHash: 'mock_payment_hash',
+    // Mock validatePreimage to return true for specific preimage
+    validatePreimage: vi.fn().mockImplementation((preimage: string) => {
+      return preimage === 'valid_preimage_hex';
+    }),
+  })),
+}));
 
 describe('crypto utilities', () => {
   describe('toHexString', () => {
@@ -872,7 +875,8 @@ describe('useHoldInvoice', () => {
 
 ```
 src/pages/4-HoldInvoice/
-├── index.tsx                    # Main page component (HoldInvoicePage)
+├── index.tsx                    # Re-export
+├── HoldInvoice.tsx              # Page implementation (HoldInvoicePage)
 └── components/
     ├── CreateHoldInvoice.tsx
     ├── HoldInvoiceStatus.tsx
