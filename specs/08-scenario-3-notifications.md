@@ -58,7 +58,7 @@ Demonstrate subscribing to payment notifications and receiving real-time updates
 
 ## Page Component
 
-**File**: `src/pages/3-Notifications/index.tsx`
+**File**: `src/pages/3-Notifications.tsx`
 
 ```typescript
 import { ScenarioPage } from '@/components/layout/ScenarioPage';
@@ -624,7 +624,8 @@ describe('useNotifications', () => {
 
 ```
 src/pages/3-Notifications/
-├── index.tsx                    # Main page component (NotificationsPage)
+├── index.tsx                    # Re-export
+├── Notifications.tsx            # Page implementation (NotificationsPage)
 └── components/
     ├── NotificationSubscriber.tsx
     └── QuickPayButtons.tsx

@@ -19,7 +19,7 @@ The next run of the alignment prompt will verify `fixing` specs and mark them `n
 |------|--------|-------|
 | 06-scenario-1-simple-payment.md | no fixes | Verified aligned with reference specs |
 | 07-scenario-2-lightning-address.md | no fixes | Verified aligned with reference specs |
-| 08-scenario-3-notifications.md | pending | |
+| 08-scenario-3-notifications.md | fixing | Aligning file structure and page component path pattern |
 | 09-scenario-4-hold-invoice.md | pending | |
 | 10-scenario-5-proof-of-payment.md | pending | |
 | 11-scenario-6-transaction-history.md | pending | |
