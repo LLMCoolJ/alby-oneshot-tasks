@@ -457,7 +457,7 @@ import userEvent from '@testing-library/user-event';
 import { ConversionCalculator } from '@/pages/8-FiatConversion/components/ConversionCalculator';
 import { QuickReference } from '@/pages/8-FiatConversion/components/QuickReference';
 
-vi.mock('@getalby/lightning-tools', () => ({
+vi.mock('@getalby/lightning-tools/fiat', () => ({
   getFiatValue: vi.fn().mockResolvedValue(42),
   getSatoshiValue: vi.fn().mockResolvedValue(1000),
 }));
