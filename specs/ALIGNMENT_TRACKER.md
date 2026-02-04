@@ -21,7 +21,7 @@ The next run of the alignment prompt will verify `fixing` specs and mark them `n
 | 07-scenario-2-lightning-address.md | no fixes | Verified aligned with reference specs |
 | 08-scenario-3-notifications.md | no fixes | Verified aligned with reference specs |
 | 09-scenario-4-hold-invoice.md | no fixes | Verified aligned with reference specs |
-| 10-scenario-5-proof-of-payment.md | pending | |
+| 10-scenario-5-proof-of-payment.md | fixing | Fixed mock import path, added File Structure section |
 | 11-scenario-6-transaction-history.md | pending | |
 | 12-scenario-7-nostr-zap.md | pending | |
 | 13-scenario-8-fiat-conversion.md | pending | |

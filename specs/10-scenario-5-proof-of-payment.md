@@ -448,8 +448,8 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PreimageVerifier } from '@/pages/5-ProofOfPayment/components/PreimageVerifier';
 
-// Mock the Invoice class from lightning-tools
-vi.mock('@getalby/lightning-tools', () => ({
+// Mock the Invoice class from lightning-tools bolt11 subpath
+vi.mock('@getalby/lightning-tools/bolt11', () => ({
   Invoice: vi.fn().mockImplementation(({ pr }) => ({
     paymentHash: 'abc123def456...',
     validatePreimage: vi.fn().mockReturnValue(true),
@@ -497,6 +497,20 @@ describe('PreimageVerifier', () => {
     expect(screen.getByLabelText(/preimage/i)).toBeInTheDocument();
   });
 });
+```
+
+---
+
+## File Structure
+
+```
+src/pages/5-ProofOfPayment/
+├── index.tsx                    # Re-export
+├── ProofOfPayment.tsx           # Page implementation (ProofOfPaymentPage)
+└── components/
+    ├── InvoiceCreator.tsx
+    ├── PayAndProve.tsx
+    └── PreimageVerifier.tsx
 ```
 
 ---
