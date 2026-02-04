@@ -65,7 +65,7 @@ Display and filter transaction history for both wallets, demonstrating the `list
 
 ## Page Component
 
-**File**: `src/pages/6-TransactionHistory/index.tsx`
+**File**: `src/pages/6-TransactionHistory/TransactionHistory.tsx`
 
 ```typescript
 import { useState } from 'react';
@@ -397,6 +397,11 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 
 **File**: `src/hooks/useTransactions.ts`
 
+**Note**: Add to `src/hooks/index.ts`:
+```typescript
+export { useTransactions } from './useTransactions';
+```
+
 ```typescript
 import { useState, useCallback, useEffect } from 'react';
 import { useNWCClient } from './useNWCClient';
@@ -614,10 +619,11 @@ describe('useTransactions', () => {
 
 ```
 src/pages/6-TransactionHistory/
-├── index.tsx                  # Main page component
+├── index.tsx                    # Re-export
+├── TransactionHistory.tsx       # Page implementation (TransactionHistoryPage)
 └── components/
-    ├── TransactionList.tsx    # Transaction list with filters
-    └── TransactionDetails.tsx # Expanded transaction view
+    ├── TransactionList.tsx      # Transaction list with filters
+    └── TransactionDetails.tsx   # Expanded transaction view
 ```
 
 ---
