@@ -52,7 +52,7 @@ Demonstrate how the preimage returned from a payment can be used as cryptographi
 
 ## Page Component
 
-**File**: `src/pages/5-ProofOfPayment/index.tsx`
+**File**: `src/pages/5-ProofOfPayment/ProofOfPayment.tsx`
 
 ```typescript
 import { useState } from 'react';
