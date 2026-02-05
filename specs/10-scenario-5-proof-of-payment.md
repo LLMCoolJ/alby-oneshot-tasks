@@ -52,7 +52,7 @@ Demonstrate how the preimage returned from a payment can be used as cryptographi
 
 ## Page Component
 
-**File**: `src/pages/5-ProofOfPayment/ProofOfPayment.tsx`
+**File**: `src/pages/5-ProofOfPayment/index.tsx`
 
 ```typescript
 import { useState } from 'react';
@@ -64,7 +64,7 @@ import { useTransactionLog } from '@/hooks/useTransactionLog';
 import { useWallet } from '@/hooks';
 import type { Nip47Transaction } from '@getalby/sdk/nwc';
 
-export default function ProofOfPaymentPage() {
+export default function ProofOfPayment() {
   const [invoice, setInvoice] = useState<Nip47Transaction | null>(null);
   const [preimage, setPreimage] = useState<string | null>(null);
   const { entries, addLog, clearLogs } = useTransactionLog();
@@ -505,8 +505,7 @@ describe('PreimageVerifier', () => {
 
 ```
 src/pages/5-ProofOfPayment/
-├── index.tsx                    # Re-export
-├── ProofOfPayment.tsx           # Page implementation (ProofOfPaymentPage)
+├── index.tsx                    # Main page component
 └── components/
     ├── InvoiceCreator.tsx
     ├── PayAndProve.tsx
