@@ -1,0 +1,19 @@
+{
+  "status": "SUCCESS",
+  "summary": "Created E2E tests for Fiat Conversion page user flows",
+  "e2e_files_created": ["tests/e2e/13-fiat-conversion.spec.ts"],
+  "screenshots_will_capture": [
+    "tests/e2e/screenshots/13-fiat-conversion-initial.png",
+    "tests/e2e/screenshots/13-fiat-conversion-currency-selected.png",
+    "tests/e2e/screenshots/13-fiat-conversion-sats-converted.png",
+    "tests/e2e/screenshots/13-fiat-conversion-fiat-converted.png"
+  ],
+  "flows_tested": [
+    "Page load with currency selector",
+    "Currency selection changes rate display",
+    "Sats to fiat conversion",
+    "Fiat to sats conversion",
+    "Quick reference amounts display",
+    "Balance with fiat equivalent"
+  ]
+}
