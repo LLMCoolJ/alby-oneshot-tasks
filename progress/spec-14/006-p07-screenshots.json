@@ -1,0 +1,7 @@
+{
+  "status": "SKIPPED",
+  "summary": "Screenshots not applicable for backend-only spec",
+  "screenshots_reviewed": 0,
+  "visual_issues": [],
+  "all_clear": true
+}
