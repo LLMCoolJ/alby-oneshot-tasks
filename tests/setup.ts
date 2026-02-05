@@ -1,34 +1,42 @@
 import '@testing-library/jest-dom';
 import { cleanup } from '@testing-library/react';
-import { afterEach, vi } from 'vitest';
+import { afterEach, beforeAll, vi } from 'vitest';
+
+// Import mocks
+import './mocks/crypto';
+import './mocks/nwc';
+import './mocks/lightning-tools';
 
 // Cleanup after each test
 afterEach(() => {
   cleanup();
+  vi.clearAllMocks();
 });
 
-// Mock crypto.subtle for tests
-const mockCrypto = {
-  getRandomValues: (array: Uint8Array) => {
-    for (let i = 0; i < array.length; i++) {
-      array[i] = Math.floor(Math.random() * 256);
-    }
-    return array;
-  },
-  subtle: {
-    digest: vi.fn().mockImplementation(async (_algorithm: string, _data: ArrayBuffer) => {
-      // Return a mock 32-byte hash
-      return new Uint8Array(32).buffer;
-    }),
-  },
-};
+// Mock WebSocket
+beforeAll(() => {
+  vi.stubGlobal('WebSocket', vi.fn().mockImplementation(() => ({
+    send: vi.fn(),
+    close: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    readyState: 1,
+  })));
+});
 
-vi.stubGlobal('crypto', mockCrypto);
-
-// Mock WebSocket for NWC tests
-vi.stubGlobal('WebSocket', vi.fn().mockImplementation(() => ({
-  send: vi.fn(),
-  close: vi.fn(),
-  addEventListener: vi.fn(),
-  removeEventListener: vi.fn(),
-})));
+// Mock matchMedia for responsive tests
+beforeAll(() => {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: vi.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  });
+});

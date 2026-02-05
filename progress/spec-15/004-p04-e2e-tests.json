@@ -1,0 +1,7 @@
+{
+  "status": "SKIPPED",
+  "summary": "E2E tests not applicable for testing infrastructure",
+  "e2e_files_created": [],
+  "screenshots_will_capture": [],
+  "flows_tested": []
+}
