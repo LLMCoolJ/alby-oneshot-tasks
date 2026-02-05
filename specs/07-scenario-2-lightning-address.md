@@ -65,14 +65,13 @@ Demonstrate paying to a Lightning Address without manually creating an invoice. 
 
 ## Page Component
 
-**File**: `src/pages/2-LightningAddress.tsx`
+**File**: `src/pages/2-LightningAddress/index.tsx`
 
 ```typescript
 import { ScenarioPage } from '@/components/layout/ScenarioPage';
 import { LightningAddressDisplay } from './components/LightningAddressDisplay';
 import { PayToAddressForm } from './components/PayToAddressForm';
-import { useTransactionLog } from '@/hooks/useTransactionLog';
-import { useWallet } from '@/hooks';
+import { useTransactionLog, useWallet } from '@/hooks';
 
 export default function LightningAddressPage() {
   const { entries, addLog, clearLogs } = useTransactionLog();
@@ -470,6 +469,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { LightningAddressDisplay } from '@/pages/2-LightningAddress/components/LightningAddressDisplay';
 import { PayToAddressForm } from '@/pages/2-LightningAddress/components/PayToAddressForm';
+import { useLightningAddressPayment } from '@/hooks/useLightningAddressPayment';
 
 // Mock hooks
 vi.mock('@/hooks', () => ({
@@ -688,8 +688,7 @@ describe('useLightningAddressPayment', () => {
 
 ```
 src/pages/2-LightningAddress/
-├── index.tsx
-├── LightningAddress.tsx
+├── index.tsx                       # Main page component
 └── components/
     ├── LightningAddressDisplay.tsx
     └── PayToAddressForm.tsx
