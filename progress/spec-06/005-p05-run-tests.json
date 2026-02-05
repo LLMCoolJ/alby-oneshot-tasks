@@ -1,0 +1,30 @@
+{
+  "status": "PARTIAL",
+  "summary": "Typecheck failed with 4 errors in SimplePayment.test.tsx. Unit tests have 3 failures in WalletCard.test.tsx. E2E tests all passed.",
+  "typecheck": {
+    "passed": false,
+    "errors": [
+      "tests/unit/pages/SimplePayment.test.tsx(19,7): error TS6133: 'mockUseInvoice' is declared but its value is never read.",
+      "tests/unit/pages/SimplePayment.test.tsx(20,7): error TS6133: 'mockUsePayment' is declared but its value is never read.",
+      "tests/unit/pages/SimplePayment.test.tsx(129,7): error TS2322: Type 'undefined' is not assignable to type 'number'.",
+      "tests/unit/pages/SimplePayment.test.tsx(288,37): error TS2352: Conversion of type with 'description: undefined' to type 'Nip47Transaction' may be a mistake."
+    ]
+  },
+  "unit_tests": {
+    "passed": false,
+    "total": 390,
+    "failed": 3,
+    "errors": [
+      "WalletCard.test.tsx: 'applies custom className' - Unable to find element by [data-testid='card']",
+      "WalletCard.test.tsx: 'has correct data-testid attribute for alice' - Unable to find element by [data-testid='card']",
+      "WalletCard.test.tsx: 'renders correctly for bob wallet' - Unable to find element by [data-testid='card']"
+    ]
+  },
+  "e2e_tests": {
+    "passed": true,
+    "total": 14,
+    "failed": 0,
+    "errors": []
+  },
+  "all_passed": false
+}

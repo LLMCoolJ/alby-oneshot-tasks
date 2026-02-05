@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "summary": "Created comprehensive unit tests for SimplePayment page components. All 43 tests pass.",
+  "test_files_created": ["tests/unit/pages/SimplePayment.test.tsx"],
+  "test_count": 43,
+  "coverage_areas": [
+    "CreateInvoiceForm: rendering, form submission, validation, error handling",
+    "InvoiceDisplay: amount display, QR code, copy button, reset",
+    "PayInvoiceForm: input rendering, invoice decoding, payment submission, error handling",
+    "PaymentResultDisplay: preimage display, fees display, success styling"
+  ]
+}

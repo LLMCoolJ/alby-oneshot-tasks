@@ -13,6 +13,7 @@ export interface CardProps {
   headerAction?: React.ReactNode;
   footer?: React.ReactNode;
   padding?: 'none' | 'sm' | 'md' | 'lg';
+  'data-testid'?: string;
 }
 
 const paddingClasses: Record<'none' | 'sm' | 'md' | 'lg', string> = {
@@ -30,6 +31,7 @@ export function Card({
   headerAction,
   footer,
   padding = 'md',
+  'data-testid': dataTestId,
 }: CardProps) {
   const hasHeader = title || subtitle || headerAction;
 
@@ -42,7 +44,7 @@ export function Card({
         rounded-xl
         ${className}
       `.trim()}
-      data-testid="card"
+      data-testid={dataTestId ?? 'card'}
     >
       {hasHeader && (
         <div

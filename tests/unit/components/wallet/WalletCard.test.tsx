@@ -168,14 +168,14 @@ describe('WalletCard', () => {
   it('applies custom className', () => {
     render(<WalletCard walletId="alice" className="custom-class" />);
 
-    const card = screen.getByTestId('card');
+    const card = screen.getByTestId('wallet-card-alice');
     expect(card).toHaveClass('custom-class');
   });
 
   it('has correct data-testid attribute for alice', () => {
     render(<WalletCard walletId="alice" />);
 
-    expect(screen.getByTestId('card')).toBeInTheDocument();
+    expect(screen.getByTestId('wallet-card-alice')).toBeInTheDocument();
     expect(screen.getByText('Alice')).toBeInTheDocument();
   });
 
@@ -183,7 +183,7 @@ describe('WalletCard', () => {
     mockWallet.id = 'bob';
     render(<WalletCard walletId="bob" />);
 
-    expect(screen.getByTestId('card')).toBeInTheDocument();
+    expect(screen.getByTestId('wallet-card-bob')).toBeInTheDocument();
     expect(screen.getByText('Bob')).toBeInTheDocument();
   });
 });
