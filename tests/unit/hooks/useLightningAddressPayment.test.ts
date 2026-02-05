@@ -133,16 +133,16 @@ describe('useLightningAddressPayment', () => {
 
     const { result } = renderHook(() => useLightningAddressPayment('alice'));
 
-    let thrownError: Error | null = null;
+    let thrownError: unknown = null;
     await act(async () => {
       try {
         await result.current.fetchAddressInfo('test@getalby.com');
       } catch (err) {
-        thrownError = err as Error;
+        thrownError = err;
       }
     });
 
-    expect(thrownError?.message).toBe('Network error');
+    expect((thrownError as Error)?.message).toBe('Network error');
 
     await waitFor(() => {
       expect(result.current.error).toBe('Network error');
@@ -156,16 +156,16 @@ describe('useLightningAddressPayment', () => {
 
     const { result } = renderHook(() => useLightningAddressPayment('alice'));
 
-    let thrownError: Error | null = null;
+    let thrownError: unknown = null;
     await act(async () => {
       try {
         await result.current.fetchAddressInfo('test@getalby.com');
       } catch (err) {
-        thrownError = err as Error;
+        thrownError = err;
       }
     });
 
-    expect(thrownError?.message).toBe('Failed to fetch LNURL-pay data');
+    expect((thrownError as Error)?.message).toBe('Failed to fetch LNURL-pay data');
 
     await waitFor(() => {
       expect(result.current.error).toBe('Failed to fetch LNURL-pay data');
@@ -225,7 +225,7 @@ describe('useLightningAddressPayment', () => {
 
     const { result } = renderHook(() => useLightningAddressPayment('alice'));
 
-    let thrownError: Error | null = null;
+    let thrownError: unknown = null;
     await act(async () => {
       try {
         await result.current.payToAddress({
@@ -233,11 +233,11 @@ describe('useLightningAddressPayment', () => {
           amount: 1000,
         });
       } catch (err) {
-        thrownError = err as Error;
+        thrownError = err;
       }
     });
 
-    expect(thrownError?.message).toBe('Insufficient balance');
+    expect((thrownError as Error)?.message).toBe('Insufficient balance');
 
     await waitFor(() => {
       expect(result.current.error).toBe('Insufficient balance');

@@ -20,3 +20,6 @@ export { useTransactionLog } from './useTransactionLog';
 
 // Spec 07: Lightning Address hooks
 export { useLightningAddressPayment } from './useLightningAddressPayment';
+
+// Spec 08: Notification hooks
+export { useNotifications } from './useNotifications';
