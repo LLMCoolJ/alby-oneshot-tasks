@@ -806,6 +806,7 @@ export { useFiatRate } from './useFiatRate';
 export { useTransactionLog } from './useTransactionLog';
 export { useLightningAddressPayment } from './useLightningAddressPayment';
 export { useNotifications } from './useNotifications';
+export { useHoldInvoice } from './useHoldInvoice';
 export { useZap } from './useZap';
 ```
 

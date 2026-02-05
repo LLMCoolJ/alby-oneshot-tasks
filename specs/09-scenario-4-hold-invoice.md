@@ -68,7 +68,7 @@ Demonstrate conditional payments using hold invoices. Alice's payment is locked 
 
 ## Page Component
 
-**File**: `src/pages/4-HoldInvoice/HoldInvoice.tsx`
+**File**: `src/pages/4-HoldInvoice/index.tsx`
 
 ```typescript
 import { useState } from 'react';
@@ -76,11 +76,10 @@ import { ScenarioPage } from '@/components/layout/ScenarioPage';
 import { CreateHoldInvoice } from './components/CreateHoldInvoice';
 import { HoldInvoiceStatus } from './components/HoldInvoiceStatus';
 import { PayHoldInvoice } from './components/PayHoldInvoice';
-import { useTransactionLog } from '@/hooks/useTransactionLog';
-import { useWallet } from '@/hooks';
+import { useTransactionLog, useWallet } from '@/hooks';
 import type { HoldInvoice } from '@/types';
 
-export default function HoldInvoicePage() {
+export default function HoldInvoice() {
   const [holdInvoice, setHoldInvoice] = useState<HoldInvoice | null>(null);
   const { entries, addLog, clearLogs } = useTransactionLog();
   const aliceWallet = useWallet('alice');
@@ -175,7 +174,7 @@ export default function HoldInvoicePage() {
 ```typescript
 import { useState } from 'react';
 import { Button, Input } from '@/components/ui';
-import { useHoldInvoice } from '@/hooks/useHoldInvoice';
+import { useHoldInvoice } from '@/hooks';
 import { CONSTANTS } from '@/types';
 import type { HoldInvoice } from '@/types';
 
@@ -256,8 +255,7 @@ export function CreateHoldInvoice({ onCreated, onLog }: CreateHoldInvoiceProps) 
 ```typescript
 import { useState, useEffect } from 'react';
 import { Button, Badge, QRCode, CopyButton } from '@/components/ui';
-import { useHoldInvoice } from '@/hooks/useHoldInvoice';
-import { useNotifications } from '@/hooks/useNotifications';
+import { useHoldInvoice, useNotifications } from '@/hooks';
 import { CONSTANTS } from '@/types';
 import type { HoldInvoice, HoldInvoiceState } from '@/types';
 
@@ -875,15 +873,14 @@ describe('useHoldInvoice', () => {
 
 ```
 src/pages/4-HoldInvoice/
-├── index.tsx                    # Re-export
-├── HoldInvoice.tsx              # Page implementation (HoldInvoicePage)
+├── index.tsx                    # Main page component
 └── components/
     ├── CreateHoldInvoice.tsx
     ├── HoldInvoiceStatus.tsx
     └── PayHoldInvoice.tsx
 
 src/hooks/
-└── useHoldInvoice.ts
+└── useHoldInvoice.ts            # Add to src/hooks/index.ts exports
 
 src/lib/
 └── crypto.ts
