@@ -23,3 +23,6 @@ export { useLightningAddressPayment } from './useLightningAddressPayment';
 
 // Spec 08: Notification hooks
 export { useNotifications } from './useNotifications';
+
+// Spec 09: Hold invoice hooks
+export { useHoldInvoice } from './useHoldInvoice';

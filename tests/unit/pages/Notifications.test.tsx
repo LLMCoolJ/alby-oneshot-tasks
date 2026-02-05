@@ -198,7 +198,7 @@ describe('NotificationSubscriber', () => {
     render(<NotificationSubscriber onLog={() => {}} />);
 
     expect(screen.getByTestId('notification-subscriber')).toBeInTheDocument();
-    expect(screen.getByTestId('badge')).toBeInTheDocument(); // Status badge uses Badge component
+    expect(screen.getByTestId('status-badge')).toBeInTheDocument(); // Status badge
     expect(screen.getByTestId('toggle-subscription-button')).toBeInTheDocument();
     expect(screen.getByTestId('empty-notifications')).toBeInTheDocument();
   });

@@ -12,6 +12,7 @@ export interface BadgeProps {
   size?: Size;
   children: React.ReactNode;
   className?: string;
+  'data-testid'?: string;
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
@@ -33,6 +34,7 @@ export function Badge({
   size = 'md',
   children,
   className = '',
+  'data-testid': testId = 'badge',
 }: BadgeProps) {
   return (
     <span
@@ -44,7 +46,7 @@ export function Badge({
         ${sizeClasses[size]}
         ${className}
       `.trim()}
-      data-testid="badge"
+      data-testid={testId}
     >
       {children}
     </span>
