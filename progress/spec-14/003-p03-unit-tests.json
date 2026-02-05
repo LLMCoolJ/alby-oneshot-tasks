@@ -1,0 +1,13 @@
+{
+  "status": "SUCCESS",
+  "summary": "Created 7 unit tests for demo API endpoints using supertest",
+  "test_files_created": ["tests/unit/server/demo.test.ts"],
+  "test_count": 7,
+  "coverage_areas": [
+    "GET /api/demo/wallets returns wallet availability",
+    "GET /api/demo/wallets does NOT expose NWC URLs",
+    "GET /api/demo/wallets returns 403 when demo mode disabled",
+    "GET /api/demo/status returns demo mode status",
+    "Health check returns healthy status"
+  ]
+}

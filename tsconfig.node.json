@@ -13,7 +13,8 @@
     "declaration": true,
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "esModuleInterop": true
   },
   "include": ["vite.config.ts", "vitest.config.ts", "playwright.config.ts", "server/**/*.ts"]
 }
