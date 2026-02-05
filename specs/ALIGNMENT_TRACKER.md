@@ -17,14 +17,14 @@ The next run of the alignment prompt will verify `fixing` specs and mark them `n
 
 | Spec | Status | Notes |
 |------|--------|-------|
-| 06-scenario-1-simple-payment.md | no fixes | Verified aligned with reference specs |
-| 07-scenario-2-lightning-address.md | no fixes | Verified aligned with reference specs |
-| 08-scenario-3-notifications.md | no fixes | Verified aligned with reference specs |
-| 09-scenario-4-hold-invoice.md | no fixes | Verified aligned with reference specs |
-| 10-scenario-5-proof-of-payment.md | no fixes | Verified aligned with reference specs |
-| 11-scenario-6-transaction-history.md | no fixes | Verified aligned with reference specs |
-| 12-scenario-7-nostr-zap.md | no fixes | Verified aligned with reference specs |
-| 13-scenario-8-fiat-conversion.md | no fixes | Verified aligned with reference specs |
+| 06-scenario-1-simple-payment.md | fixing | |
+| 07-scenario-2-lightning-address.md | pending | |
+| 08-scenario-3-notifications.md | pending | |
+| 09-scenario-4-hold-invoice.md | pending | |
+| 10-scenario-5-proof-of-payment.md | pending | |
+| 11-scenario-6-transaction-history.md | pending | |
+| 12-scenario-7-nostr-zap.md | pending | |
+| 13-scenario-8-fiat-conversion.md | pending | |
 
 ## Reference Documents
 - PRD.md

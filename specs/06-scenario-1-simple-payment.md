@@ -66,7 +66,7 @@ Implement the simplest Lightning payment flow: Bob creates an invoice, Alice pay
 
 ## Page Component
 
-**File**: `src/pages/1-SimplePayment.tsx`
+**File**: `src/pages/1-SimplePayment/index.tsx`
 
 ```typescript
 import { useState } from 'react';
@@ -288,7 +288,7 @@ export function InvoiceDisplay({ invoice, onReset }: InvoiceDisplayProps) {
 import { useState, useEffect } from 'react';
 import { Button, Input } from '@/components/ui';
 import { usePayment } from '@/hooks';
-import { decodeInvoice } from '@getalby/lightning-tools';
+import { decodeInvoice } from '@getalby/lightning-tools/bolt11';
 import type { PaymentResult } from '@/types';
 
 interface PayInvoiceFormProps {
@@ -605,8 +605,7 @@ describe('Simple Payment Flow', () => {
 
 ```
 src/pages/1-SimplePayment/
-├── index.tsx                 # Main page component (re-export)
-├── SimplePayment.tsx         # Page implementation
+├── index.tsx                 # Main page component
 └── components/
     ├── CreateInvoiceForm.tsx
     ├── InvoiceDisplay.tsx
