@@ -1,0 +1,15 @@
+{
+  "status": "SUCCESS",
+  "summary": "All files verified, acceptance criteria met",
+  "verification_passed": true,
+  "acceptance_criteria": [
+    {"criterion": "Bob's Lightning Address displayed if available", "passed": true},
+    {"criterion": "Warning shown when Lightning Address not available", "passed": true},
+    {"criterion": "Lightning Address format validated", "passed": true},
+    {"criterion": "LNURL-pay data fetched on blur", "passed": true},
+    {"criterion": "Min/max amounts displayed", "passed": true},
+    {"criterion": "Comment field respects server settings", "passed": true}
+  ],
+  "missing_files": [],
+  "issues": []
+}

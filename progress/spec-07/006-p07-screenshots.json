@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "summary": "All screenshots reviewed. Lightning Address page displays correctly.",
+  "screenshots_reviewed": 3,
+  "visual_issues": [],
+  "js_errors": [],
+  "all_clear": true
+}

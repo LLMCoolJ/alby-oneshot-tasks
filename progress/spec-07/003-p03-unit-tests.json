@@ -1,0 +1,10 @@
+{
+  "status": "SUCCESS",
+  "summary": "Created unit tests for LightningAddress page and useLightningAddressPayment hook",
+  "test_files_created": [
+    "tests/unit/pages/LightningAddress.test.tsx",
+    "tests/unit/hooks/useLightningAddressPayment.test.ts"
+  ],
+  "test_count": 42,
+  "coverage_areas": ["component rendering", "address validation", "LNURL fetch", "payment flow"]
+}

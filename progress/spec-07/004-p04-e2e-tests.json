@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "summary": "Created E2E tests for Lightning Address page",
+  "e2e_files_created": ["tests/e2e/07-lightning-address.spec.ts"],
+  "screenshots_will_capture": [
+    "tests/e2e/screenshots/07-lightning-address-initial.png",
+    "tests/e2e/screenshots/07-lightning-address-layout.png",
+    "tests/e2e/screenshots/07-lightning-address-mobile.png"
+  ],
+  "flows_tested": ["page load", "wallet cards", "forms render", "navigation"]
+}
