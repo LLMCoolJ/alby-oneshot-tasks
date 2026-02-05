@@ -26,3 +26,6 @@ export { useNotifications } from './useNotifications';
 
 // Spec 09: Hold invoice hooks
 export { useHoldInvoice } from './useHoldInvoice';
+
+// Spec 11: Transaction history hooks
+export { useTransactions } from './useTransactions';

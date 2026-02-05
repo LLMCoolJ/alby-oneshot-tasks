@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "e2e_files_created": [
+    "tests/e2e/11-transaction-history.spec.ts"
+  ],
+  "screenshots_will_capture": [
+    "tests/e2e/screenshots/11-transaction-history-initial.png",
+    "tests/e2e/screenshots/11-transaction-history-layout.png",
+    "tests/e2e/screenshots/11-transaction-history-mobile.png"
+  ]
+}

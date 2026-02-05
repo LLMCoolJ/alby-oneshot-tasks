@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "test_files_created": [
+    "tests/unit/hooks/useTransactions.test.ts",
+    "tests/unit/pages/TransactionHistory.test.tsx"
+  ],
+  "test_count": 44
+}

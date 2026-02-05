@@ -1,0 +1,15 @@
+{
+  "status": "SUCCESS",
+  "verification_passed": true,
+  "acceptance_criteria": [
+    { "criterion": "Transactions load on page mount", "verified": true },
+    { "criterion": "Filter by incoming/outgoing works", "verified": true },
+    { "criterion": "Pagination loads more transactions", "verified": true },
+    { "criterion": "Clicking transaction shows details", "verified": true },
+    { "criterion": "Transaction details show all fields", "verified": true },
+    { "criterion": "Copy buttons work for hash/preimage", "verified": true },
+    { "criterion": "Loading states display correctly", "verified": true },
+    { "criterion": "Empty state shown when no transactions", "verified": true }
+  ],
+  "issues": []
+}
