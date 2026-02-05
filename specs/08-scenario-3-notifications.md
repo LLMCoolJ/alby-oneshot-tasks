@@ -6,8 +6,10 @@ Demonstrate subscribing to payment notifications and receiving real-time updates
 
 ## Dependencies
 
+- [03-shared-components.md](./03-shared-components.md) - UI components
 - [04-wallet-context.md](./04-wallet-context.md) - NWC client access
 - [05-layout.md](./05-layout.md) - ScenarioPage template
+- [07-scenario-2-lightning-address.md](./07-scenario-2-lightning-address.md) - useLightningAddressPayment hook
 
 ## User Story
 
@@ -58,16 +60,15 @@ Demonstrate subscribing to payment notifications and receiving real-time updates
 
 ## Page Component
 
-**File**: `src/pages/3-Notifications/Notifications.tsx`
+**File**: `src/pages/3-Notifications/index.tsx`
 
 ```typescript
 import { ScenarioPage } from '@/components/layout/ScenarioPage';
 import { NotificationSubscriber } from './components/NotificationSubscriber';
 import { QuickPayButtons } from './components/QuickPayButtons';
-import { useTransactionLog } from '@/hooks/useTransactionLog';
-import { useWallet } from '@/hooks';
+import { useTransactionLog, useWallet } from '@/hooks';
 
-export default function NotificationsPage() {
+export default function Notifications() {
   const { entries, addLog, clearLogs } = useTransactionLog();
   const aliceWallet = useWallet('alice');
   const bobWallet = useWallet('bob');
@@ -624,8 +625,7 @@ describe('useNotifications', () => {
 
 ```
 src/pages/3-Notifications/
-├── index.tsx                    # Re-export
-├── Notifications.tsx            # Page implementation (NotificationsPage)
+├── index.tsx                    # Main page component
 └── components/
     ├── NotificationSubscriber.tsx
     └── QuickPayButtons.tsx
