@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "summary": "All tests pass after fixing TypeScript errors in useLightningAddressPayment.test.ts",
+  "typecheck": { "passed": true, "errors": [] },
+  "unit_tests": { "passed": true, "total": 478, "failed": 0, "errors": [] },
+  "e2e_tests": { "passed": true, "total": 15, "failed": 0, "errors": [] },
+  "all_passed": true
+}

@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "e2e_files_created": [
+    "tests/e2e/08-notifications.spec.ts"
+  ],
+  "screenshots_will_capture": [
+    "tests/e2e/screenshots/08-notifications-initial.png",
+    "tests/e2e/screenshots/08-notifications-layout.png",
+    "tests/e2e/screenshots/08-notifications-mobile.png"
+  ]
+}

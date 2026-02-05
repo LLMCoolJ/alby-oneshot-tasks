@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "test_files_created": [
+    "tests/unit/pages/HoldInvoice.test.tsx"
+  ],
+  "existing_test_files": [
+    "tests/unit/lib/crypto.test.ts",
+    "tests/unit/hooks/useHoldInvoice.test.ts"
+  ],
+  "test_count": 47
+}

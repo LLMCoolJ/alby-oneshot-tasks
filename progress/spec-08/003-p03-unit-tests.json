@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "test_files_created": [
+    "tests/unit/pages/Notifications.test.tsx",
+    "tests/unit/hooks/useNotifications.test.ts"
+  ],
+  "test_count": 46
+}

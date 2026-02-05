@@ -1,0 +1,15 @@
+{
+  "status": "PARTIAL",
+  "typecheck": {
+    "passed": false,
+    "errors": [
+      "tests/unit/hooks/useLightningAddressPayment.test.ts(145,25): error TS2339: Property 'message' does not exist on type 'never'.",
+      "tests/unit/hooks/useLightningAddressPayment.test.ts(168,25): error TS2339: Property 'message' does not exist on type 'never'.",
+      "tests/unit/hooks/useLightningAddressPayment.test.ts(240,25): error TS2339: Property 'message' does not exist on type 'never'."
+    ],
+    "note": "TypeScript errors are in pre-existing file from spec 07, not in spec 08 files"
+  },
+  "unit_tests": { "passed": true, "total": 478, "failed": 0, "errors": [] },
+  "e2e_tests": { "passed": true, "total": 15, "failed": 0, "errors": [] },
+  "all_passed": false
+}

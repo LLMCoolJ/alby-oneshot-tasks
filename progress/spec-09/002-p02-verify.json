@@ -1,0 +1,16 @@
+{
+  "status": "SUCCESS",
+  "verification_passed": true,
+  "acceptance_criteria": [
+    { "criterion": "Bob can create hold invoice with amount/description", "status": "PASS" },
+    { "criterion": "Preimage and hash are generated correctly", "status": "PASS" },
+    { "criterion": "Invoice is displayed with QR code", "status": "PASS" },
+    { "criterion": "Alice can pay the hold invoice", "status": "PASS" },
+    { "criterion": "Status updates to Held when payment received", "status": "PASS" },
+    { "criterion": "Bob can settle to receive funds", "status": "PASS" },
+    { "criterion": "Bob can cancel to refund Alice", "status": "PASS" },
+    { "criterion": "Final states display correctly", "status": "PASS" },
+    { "criterion": "Preimage verification works", "status": "PASS" }
+  ],
+  "issues": []
+}

@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "summary": "Fixed pre-existing TypeScript errors in useLightningAddressPayment.test.ts",
+  "fixes_applied": [
+    {
+      "file": "tests/unit/hooks/useLightningAddressPayment.test.ts",
+      "issue": "TypeScript error: Property 'message' does not exist on type 'never'",
+      "fix": "Changed type annotation from 'Error | null' to 'unknown' and cast when accessing .message"
+    }
+  ],
+  "root_causes": [
+    "TypeScript narrowing: After assigning inside catch block, TS didn't recognize the value was set"
+  ]
+}

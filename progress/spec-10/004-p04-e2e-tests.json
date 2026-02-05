@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "e2e_files_created": [
+    "tests/e2e/10-proof-of-payment.spec.ts"
+  ],
+  "screenshots_will_capture": [
+    "tests/e2e/screenshots/10-proof-of-payment-initial.png",
+    "tests/e2e/screenshots/10-proof-of-payment-layout.png",
+    "tests/e2e/screenshots/10-proof-of-payment-manual-verify.png",
+    "tests/e2e/screenshots/10-proof-of-payment-mobile.png"
+  ]
+}

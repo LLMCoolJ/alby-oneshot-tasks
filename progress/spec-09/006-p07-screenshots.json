@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "summary": "All screenshots reviewed. Hold Invoice page displays correctly.",
+  "screenshots_reviewed": 4,
+  "visual_issues": [],
+  "js_errors": [],
+  "all_clear": true
+}

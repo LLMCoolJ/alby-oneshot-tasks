@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "verification_passed": true,
+  "acceptance_criteria": [
+    { "criterion": "Bob can create invoice (payment hash embedded)", "verified": true },
+    { "criterion": "Alice can pay and receive preimage", "verified": true },
+    { "criterion": "Automatic verification shows hash comparison", "verified": true },
+    { "criterion": "Valid preimage shows Verified state", "verified": true },
+    { "criterion": "Invalid preimage shows Invalid state", "verified": true },
+    { "criterion": "Manual verification works with any invoice/preimage", "verified": true },
+    { "criterion": "Educational content explains the concept", "verified": true }
+  ],
+  "issues": []
+}

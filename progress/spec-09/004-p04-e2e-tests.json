@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "e2e_files_created": [
+    "tests/e2e/09-hold-invoice.spec.ts"
+  ],
+  "screenshots_will_capture": [
+    "tests/e2e/screenshots/09-hold-invoice-initial.png",
+    "tests/e2e/screenshots/09-hold-invoice-explainer.png",
+    "tests/e2e/screenshots/09-hold-invoice-layout.png",
+    "tests/e2e/screenshots/09-hold-invoice-mobile.png"
+  ]
+}

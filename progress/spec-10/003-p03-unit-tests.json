@@ -1,0 +1,7 @@
+{
+  "status": "SUCCESS",
+  "test_files_created": [
+    "tests/unit/pages/ProofOfPayment.test.tsx"
+  ],
+  "test_count": 22
+}
