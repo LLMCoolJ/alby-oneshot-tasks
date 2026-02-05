@@ -1,11 +1,11 @@
 {
-  "spec_number": "10",
-  "spec_path": "specs/10-scenario-5-proof-of-payment.md",
-  "spec_name": "scenario-5-proof-of-payment",
-  "page_url": "/proof-of-payment",
-  "status": "done",
-  "current_phase": 10,
-  "next_sequence": 9,
+  "spec_number": "12",
+  "spec_path": "specs/12-scenario-7-nostr-zap.md",
+  "spec_name": "scenario-7-nostr-zap",
+  "page_url": "/7-nostr-zap",
+  "status": "in_progress",
+  "current_phase": 7,
+  "next_sequence": 6,
   "iterations": { "verify": 0, "test_fix": 0, "refactor": 0 },
   "phases": {
     "1_implement": { "status": "done", "latest": "001-p01-implement.json" },
@@ -14,8 +14,8 @@
     "4_e2e_tests": { "status": "done", "latest": "004-p04-e2e-tests.json" },
     "5_run_tests": { "status": "done", "latest": "005-p05-run-tests.json" },
     "6_fix": { "status": "skipped", "latest": null },
-    "7_screenshots": { "status": "done", "latest": "006-p07-screenshots.json" },
-    "8_code_review": { "status": "done", "latest": "007-p08-code-review.json" },
-    "9_commit": { "status": "done", "latest": "008-p09-commit.json" }
+    "7_screenshots": { "status": "pending", "latest": null },
+    "8_code_review": { "status": "pending", "latest": null },
+    "9_commit": { "status": "pending", "latest": null }
   }
 }

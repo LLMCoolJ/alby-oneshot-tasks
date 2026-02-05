@@ -29,3 +29,6 @@ export { useHoldInvoice } from './useHoldInvoice';
 
 // Spec 11: Transaction history hooks
 export { useTransactions } from './useTransactions';
+
+// Spec 12: Nostr zap hooks
+export { useZap } from './useZap';

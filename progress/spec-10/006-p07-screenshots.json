@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "summary": "All screenshots reviewed. Proof of Payment page displays correctly.",
+  "screenshots_reviewed": 4,
+  "visual_issues": [],
+  "js_errors": [],
+  "all_clear": true
+}

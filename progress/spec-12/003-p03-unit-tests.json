@@ -1,0 +1,8 @@
+{
+  "status": "SUCCESS",
+  "test_files_created": [
+    "tests/unit/hooks/useZap.test.ts",
+    "tests/unit/pages/NostrZap.test.tsx"
+  ],
+  "test_count": 52
+}
