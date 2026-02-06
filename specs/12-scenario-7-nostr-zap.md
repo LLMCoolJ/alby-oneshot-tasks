@@ -394,6 +394,11 @@ export function ZapResult({ result, onReset }: ZapResultProps) {
 
 **File**: `src/hooks/useZap.ts`
 
+**Note**: Add to `src/hooks/index.ts`:
+```typescript
+export { useZap } from './useZap';
+```
+
 ```typescript
 import { useState, useCallback } from 'react';
 import { LightningAddress } from '@getalby/lightning-tools/lnurl';
