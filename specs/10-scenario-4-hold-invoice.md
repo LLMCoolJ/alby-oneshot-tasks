@@ -1,4 +1,4 @@
-# Specification 09: Scenario 4 - Hold Invoice (Escrow)
+# Specification 10: Scenario 4 - Hold Invoice (Escrow)
 
 ## Purpose
 
@@ -6,9 +6,9 @@ Demonstrate conditional payments using hold invoices. Alice's payment is locked 
 
 ## Dependencies
 
-- [04-wallet-context.md](./04-wallet-context.md) - NWC client access
-- [05-layout.md](./05-layout.md) - ScenarioPage template
-- [08-scenario-3-notifications.md](./08-scenario-3-notifications.md) - Uses `hold_invoice_accepted` notifications
+- [05-wallet-context.md](./05-wallet-context.md) - NWC client access
+- [06-layout.md](./06-layout.md) - ScenarioPage template
+- [09-scenario-3-notifications.md](./09-scenario-3-notifications.md) - Uses `hold_invoice_accepted` notifications
 
 ## User Story
 
@@ -903,5 +903,5 @@ src/lib/
 
 ## Related Specifications
 
-- [08-scenario-3-notifications.md](./08-scenario-3-notifications.md) - Uses hold_invoice_accepted notifications
-- [10-scenario-5-proof-of-payment.md](./10-scenario-5-proof-of-payment.md) - Preimage verification
+- [09-scenario-3-notifications.md](./09-scenario-3-notifications.md) - Uses hold_invoice_accepted notifications
+- [11-scenario-5-proof-of-payment.md](./11-scenario-5-proof-of-payment.md) - Preimage verification

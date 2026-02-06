@@ -1,4 +1,4 @@
-# Specification 08: Scenario 3 - Real-time Payment Notifications
+# Specification 09: Scenario 3 - Real-time Payment Notifications
 
 ## Purpose
 
@@ -6,10 +6,10 @@ Demonstrate subscribing to payment notifications and receiving real-time updates
 
 ## Dependencies
 
-- [03-shared-components.md](./03-shared-components.md) - UI components
-- [04-wallet-context.md](./04-wallet-context.md) - NWC client access
-- [05-layout.md](./05-layout.md) - ScenarioPage template
-- [07-scenario-2-lightning-address.md](./07-scenario-2-lightning-address.md) - useLightningAddressPayment hook
+- [04-shared-components.md](./04-shared-components.md) - UI components
+- [05-wallet-context.md](./05-wallet-context.md) - NWC client access
+- [06-layout.md](./06-layout.md) - ScenarioPage template
+- [08-scenario-2-lightning-address.md](./08-scenario-2-lightning-address.md) - useLightningAddressPayment hook
 
 ## User Story
 
@@ -230,7 +230,7 @@ function NotificationItem({ notification }: { notification: NotificationEvent })
 
 **File**: `src/pages/3-Notifications/components/QuickPayButtons.tsx`
 
-> **Note**: This component uses `useLightningAddressPayment` which is defined in [07-scenario-2-lightning-address.md](./07-scenario-2-lightning-address.md) and should be exported from `src/hooks/index.ts`.
+> **Note**: This component uses `useLightningAddressPayment` which is defined in [08-scenario-2-lightning-address.md](./08-scenario-2-lightning-address.md) and should be exported from `src/hooks/index.ts`.
 
 ```typescript
 import { useState } from 'react';
@@ -650,6 +650,6 @@ src/hooks/
 
 ## Related Specifications
 
-- [04-wallet-context.md](./04-wallet-context.md) - NWC client access
-- [07-scenario-2-lightning-address.md](./07-scenario-2-lightning-address.md) - Defines `useLightningAddressPayment` hook used by QuickPayButtons
-- [09-scenario-4-hold-invoice.md](./09-scenario-4-hold-invoice.md) - Uses hold_invoice_accepted notifications
+- [05-wallet-context.md](./05-wallet-context.md) - NWC client access
+- [08-scenario-2-lightning-address.md](./08-scenario-2-lightning-address.md) - Defines `useLightningAddressPayment` hook used by QuickPayButtons
+- [10-scenario-4-hold-invoice.md](./10-scenario-4-hold-invoice.md) - Uses hold_invoice_accepted notifications

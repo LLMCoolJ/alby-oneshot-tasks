@@ -1,4 +1,4 @@
-# Specification 07: Scenario 2 - Lightning Address Payment
+# Specification 08: Scenario 2 - Lightning Address Payment
 
 ## Purpose
 
@@ -6,9 +6,9 @@ Demonstrate paying to a Lightning Address without manually creating an invoice. 
 
 ## Dependencies
 
-- [04-wallet-context.md](./04-wallet-context.md) - Wallet hooks
-- [05-layout.md](./05-layout.md) - ScenarioPage template
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Similar flow patterns
+- [05-wallet-context.md](./05-wallet-context.md) - Wallet hooks
+- [06-layout.md](./06-layout.md) - ScenarioPage template
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - Similar flow patterns
 
 ## User Story
 
@@ -714,5 +714,5 @@ src/hooks/
 
 ## Related Specifications
 
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Similar payment patterns
-- [12-scenario-7-nostr-zap.md](./12-scenario-7-nostr-zap.md) - Uses Lightning Address for zaps
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - Similar payment patterns
+- [13-scenario-7-nostr-zap.md](./13-scenario-7-nostr-zap.md) - Uses Lightning Address for zaps

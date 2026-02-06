@@ -1,4 +1,4 @@
-# Specification 02: Shared Types
+# Specification 03: Shared Types
 
 ## Purpose
 
@@ -775,6 +775,6 @@ describe('Constants', () => {
 
 ## Related Specifications
 
-- [03-shared-components.md](./03-shared-components.md) - Uses UI types
-- [04-wallet-context.md](./04-wallet-context.md) - Uses wallet types
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Uses invoice/payment types
+- [04-shared-components.md](./04-shared-components.md) - Uses UI types
+- [05-wallet-context.md](./05-wallet-context.md) - Uses wallet types
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - Uses invoice/payment types

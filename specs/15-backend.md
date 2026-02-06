@@ -1,4 +1,4 @@
-# Specification 14: Backend Server
+# Specification 15: Backend Server
 
 ## Purpose
 
@@ -313,4 +313,4 @@ describe('Health Check', () => {
 ## Related Specifications
 
 - [01-project-setup.md](./01-project-setup.md) - Project configuration
-- [04-wallet-context.md](./04-wallet-context.md) - Client-side NWC handling
+- [05-wallet-context.md](./05-wallet-context.md) - Client-side NWC handling

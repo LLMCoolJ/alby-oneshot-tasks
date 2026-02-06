@@ -1,0 +1,21 @@
+[Unit]
+Description=Alby Demo Server (Development)
+After=network.target
+
+[Service]
+Type=simple
+User={{USER}}
+WorkingDirectory={{PROJECT_ROOT}}
+Environment="NODE_ENV=development"
+Environment="NVM_DIR={{NVM_DIR}}"
+ExecStart=/bin/bash -c 'source {{NVM_DIR}}/nvm.sh && npm run dev'
+Restart=on-failure
+RestartSec=5s
+KillMode=control-group
+KillSignal=SIGTERM
+TimeoutStopSec=30s
+StandardOutput=append:{{PROJECT_ROOT}}/logs/dev-stdout.log
+StandardError=append:{{PROJECT_ROOT}}/logs/dev-stderr.log
+
+[Install]
+WantedBy=default.target

@@ -1,4 +1,4 @@
-# Specification 04: Wallet Context & Hooks
+# Specification 05: Wallet Context & Hooks
 
 ## Purpose
 
@@ -6,7 +6,7 @@ Define the React Context and custom hooks that manage NWC client connections for
 
 ## Dependencies
 
-- [02-shared-types.md](./02-shared-types.md) - Type definitions
+- [03-shared-types.md](./03-shared-types.md) - Type definitions
 - [01-project-setup.md](./01-project-setup.md) - SDK packages
 
 ## Architecture
@@ -967,6 +967,6 @@ describe('useBalance', () => {
 
 ## Related Specifications
 
-- [02-shared-types.md](./02-shared-types.md) - Type definitions
-- [03-shared-components.md](./03-shared-components.md) - UI components used
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Uses payment hooks
+- [03-shared-types.md](./03-shared-types.md) - Type definitions
+- [04-shared-components.md](./04-shared-components.md) - UI components used
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - Uses payment hooks

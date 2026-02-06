@@ -1,4 +1,4 @@
-# Specification 05: Layout & Navigation
+# Specification 06: Layout & Navigation
 
 ## Purpose
 
@@ -7,9 +7,9 @@ Define the main application layout including sidebar navigation, routing, and re
 ## Dependencies
 
 - [01-project-setup.md](./01-project-setup.md) - React Router setup
-- [02-shared-types.md](./02-shared-types.md) - SCENARIOS constant
-- [03-shared-components.md](./03-shared-components.md) - UI components
-- [04-wallet-context.md](./04-wallet-context.md) - WalletProvider
+- [03-shared-types.md](./03-shared-types.md) - SCENARIOS constant
+- [04-shared-components.md](./04-shared-components.md) - UI components
+- [05-wallet-context.md](./05-wallet-context.md) - WalletProvider
 
 ---
 
@@ -642,7 +642,7 @@ describe('TransactionLog', () => {
 
 ## Related Specifications
 
-- [02-shared-types.md](./02-shared-types.md) - SCENARIOS constant
-- [03-shared-components.md](./03-shared-components.md) - UI components
-- [04-wallet-context.md](./04-wallet-context.md) - WalletProvider wrapping
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - First scenario page
+- [03-shared-types.md](./03-shared-types.md) - SCENARIOS constant
+- [04-shared-components.md](./04-shared-components.md) - UI components
+- [05-wallet-context.md](./05-wallet-context.md) - WalletProvider wrapping
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - First scenario page

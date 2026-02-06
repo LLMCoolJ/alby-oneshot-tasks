@@ -1,4 +1,4 @@
-# Specification 15: Testing Strategy
+# Specification 16: Testing Strategy
 
 ## Purpose
 

@@ -252,5 +252,5 @@ UI built with reusable, tested components that can be composed for each scenario
 ## Related Specifications
 
 - [01-project-setup.md](./01-project-setup.md) - Project initialization
-- [02-shared-types.md](./02-shared-types.md) - TypeScript definitions
-- [15-testing-strategy.md](./15-testing-strategy.md) - Testing approach
+- [03-shared-types.md](./03-shared-types.md) - TypeScript definitions
+- [16-testing-strategy.md](./16-testing-strategy.md) - Testing approach

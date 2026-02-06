@@ -1,4 +1,4 @@
-# Specification 10: Scenario 5 - Proof of Payment
+# Specification 11: Scenario 5 - Proof of Payment
 
 ## Purpose
 
@@ -6,7 +6,7 @@ Demonstrate how the preimage returned from a payment can be used as cryptographi
 
 ## Dependencies
 
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Basic payment flow
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - Basic payment flow
 
 **SDK Dependencies:**
 - `Invoice` class from `@getalby/lightning-tools/bolt11` - for `validatePreimage()` method
@@ -528,4 +528,4 @@ src/pages/5-ProofOfPayment/
 
 ## Related Specifications
 
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Payment flow
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - Payment flow

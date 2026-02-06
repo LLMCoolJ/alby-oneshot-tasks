@@ -1,4 +1,4 @@
-# Specification 06: Scenario 1 - Simple Invoice Payment
+# Specification 07: Scenario 1 - Simple Invoice Payment
 
 ## Purpose
 
@@ -6,9 +6,9 @@ Implement the simplest Lightning payment flow: Bob creates an invoice, Alice pay
 
 ## Dependencies
 
-- [03-shared-components.md](./03-shared-components.md) - UI components
-- [04-wallet-context.md](./04-wallet-context.md) - Wallet hooks
-- [05-layout.md](./05-layout.md) - ScenarioPage template
+- [04-shared-components.md](./04-shared-components.md) - UI components
+- [05-wallet-context.md](./05-wallet-context.md) - Wallet hooks
+- [06-layout.md](./06-layout.md) - ScenarioPage template
 
 ## User Story
 
@@ -641,6 +641,6 @@ src/pages/1-SimplePayment/
 
 ## Related Specifications
 
-- [04-wallet-context.md](./04-wallet-context.md) - useInvoice, usePayment hooks
-- [05-layout.md](./05-layout.md) - ScenarioPage, TransactionLog
-- [07-scenario-2-lightning-address.md](./07-scenario-2-lightning-address.md) - Similar payment flow
+- [05-wallet-context.md](./05-wallet-context.md) - useInvoice, usePayment hooks
+- [06-layout.md](./06-layout.md) - ScenarioPage, TransactionLog
+- [08-scenario-2-lightning-address.md](./08-scenario-2-lightning-address.md) - Similar payment flow

@@ -1,4 +1,4 @@
-# Specification 12: Scenario 7 - Nostr Zap
+# Specification 13: Scenario 7 - Nostr Zap
 
 ## Purpose
 
@@ -6,8 +6,8 @@ Demonstrate social tipping on Nostr using Lightning zaps. Alice zaps Bob's Nostr
 
 ## Dependencies
 
-- [07-scenario-2-lightning-address.md](./07-scenario-2-lightning-address.md) - Lightning Address payment
-- [04-wallet-context.md](./04-wallet-context.md) - NWC client access
+- [08-scenario-2-lightning-address.md](./08-scenario-2-lightning-address.md) - Lightning Address payment
+- [05-wallet-context.md](./05-wallet-context.md) - NWC client access
 
 ## User Story
 
@@ -580,5 +580,5 @@ src/pages/7-NostrZap/
 
 ## Related Specifications
 
-- [07-scenario-2-lightning-address.md](./07-scenario-2-lightning-address.md) - Uses Lightning Address
-- [04-wallet-context.md](./04-wallet-context.md) - NWC client access
+- [08-scenario-2-lightning-address.md](./08-scenario-2-lightning-address.md) - Uses Lightning Address
+- [05-wallet-context.md](./05-wallet-context.md) - NWC client access

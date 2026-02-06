@@ -1,4 +1,4 @@
-# Specification 13: Scenario 8 - Fiat Conversion
+# Specification 14: Scenario 8 - Fiat Conversion
 
 ## Purpose
 
@@ -6,8 +6,8 @@ Display all amounts in both satoshis and fiat currency (USD, EUR, etc.) with rea
 
 ## Dependencies
 
-- [02-shared-types.md](./02-shared-types.md) - FiatCurrency, FiatPreferences types
-- [04-wallet-context.md](./04-wallet-context.md) - useFiatRate hook
+- [03-shared-types.md](./03-shared-types.md) - FiatCurrency, FiatPreferences types
+- [05-wallet-context.md](./05-wallet-context.md) - useFiatRate hook
 
 ## User Story
 
@@ -528,5 +528,5 @@ src/pages/8-FiatConversion/
 
 ## Related Specifications
 
-- [04-wallet-context.md](./04-wallet-context.md) - useFiatRate hook
-- [03-shared-components.md](./03-shared-components.md) - BalanceDisplay with fiat
+- [05-wallet-context.md](./05-wallet-context.md) - useFiatRate hook
+- [04-shared-components.md](./04-shared-components.md) - BalanceDisplay with fiat

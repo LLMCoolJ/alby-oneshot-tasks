@@ -34,7 +34,27 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
 });
 
 // Start server
-app.listen(config.port, () => {
+const server = app.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`);
   console.log(`Environment: ${config.isDev ? 'development' : 'production'}`);
 });
+
+// Graceful shutdown handler
+const shutdown = (signal: string) => {
+  console.log(`\n${signal} received, shutting down gracefully...`);
+
+  server.close(() => {
+    console.log('Server closed successfully');
+    process.exit(0);
+  });
+
+  // Force shutdown after 5 seconds if server hasn't closed
+  setTimeout(() => {
+    console.error('Could not close connections in time, forcefully shutting down');
+    process.exit(1);
+  }, 5000);
+};
+
+// Register signal handlers
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));

@@ -642,5 +642,5 @@ describe('Project Setup', () => {
 ## Related Specifications
 
 - [00-overview.md](./00-overview.md) - Architecture reference
-- [14-backend.md](./14-backend.md) - Express server details
-- [15-testing-strategy.md](./15-testing-strategy.md) - Testing approach
+- [15-backend.md](./15-backend.md) - Express server details
+- [16-testing-strategy.md](./16-testing-strategy.md) - Testing approach

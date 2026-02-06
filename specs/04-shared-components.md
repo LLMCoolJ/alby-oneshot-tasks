@@ -1,4 +1,4 @@
-# Specification 03: Shared Components
+# Specification 04: Shared Components
 
 ## Purpose
 
@@ -7,7 +7,7 @@ Define reusable UI components that form the building blocks for all scenario pag
 ## Dependencies
 
 - [01-project-setup.md](./01-project-setup.md) - Tailwind CSS configuration
-- [02-shared-types.md](./02-shared-types.md) - Type definitions
+- [03-shared-types.md](./03-shared-types.md) - Type definitions
 
 ## Component Overview
 
@@ -428,6 +428,6 @@ tests/unit/components/
 
 ## Related Specifications
 
-- [02-shared-types.md](./02-shared-types.md) - Type definitions
-- [05-layout.md](./05-layout.md) - Uses Card, Button
-- [06-scenario-1-simple-payment.md](./06-scenario-1-simple-payment.md) - Uses Input, QRCode, Button
+- [03-shared-types.md](./03-shared-types.md) - Type definitions
+- [06-layout.md](./06-layout.md) - Uses Card, Button
+- [07-scenario-1-simple-payment.md](./07-scenario-1-simple-payment.md) - Uses Input, QRCode, Button

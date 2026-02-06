@@ -46,25 +46,25 @@
 | Spec | File(s) | Contents |
 |------|---------|----------|
 | 01-project-setup | `package.json`, `vite.config.ts`, `tsconfig.json`, `tailwind.config.js`, `playwright.config.ts`, `index.html`, `src/main.tsx`, `src/index.css`, `tests/setup.ts`, `tests/utils/test-wallet.ts` | Project config, test setup, test wallet utilities |
-| 02-shared-types | `src/types/index.ts` | Types, interfaces, type guards, constants, SDK re-exports |
-| 03-shared-components | `src/components/ui/Button.tsx`, `src/components/ui/Input.tsx`, `src/components/ui/Card.tsx`, `src/components/ui/Badge.tsx`, `src/components/ui/Spinner.tsx`, `src/components/ui/QRCode.tsx`, `src/components/ui/CopyButton.tsx`, `src/components/ui/index.ts` | UI primitives (Button, Input, Card, Badge, Spinner, QRCode, CopyButton) |
-| 04-wallet-context | `src/context/WalletContext.tsx`, `src/hooks/useWallet.ts`, `src/hooks/useWalletActions.ts`, `src/hooks/useNWCClient.ts`, `src/hooks/useBalance.ts`, `src/hooks/useInvoice.ts`, `src/hooks/usePayment.ts`, `src/hooks/useBudget.ts`, `src/hooks/useFiatRate.ts`, `src/hooks/index.ts`, `src/components/wallet/WalletCard.tsx`, `src/components/wallet/WalletConnect.tsx`, `src/components/wallet/BalanceDisplay.tsx` | WalletContext, WalletProvider, wallet hooks, wallet components |
-| 05-layout | `src/App.tsx`, `src/components/layout/Layout.tsx`, `src/components/layout/Sidebar.tsx`, `src/components/layout/ScenarioPage.tsx`, `src/components/transaction/TransactionLog.tsx`, `src/hooks/useTransactionLog.ts` | Layout, Sidebar, ScenarioPage, TransactionLog, useTransactionLog hook |
-| 14-backend | `server/index.ts`, `server/config.ts`, `server/routes/demo.ts` | Express server, config, demo wallet endpoints |
-| 15-testing-strategy | `tests/setup.ts`, `tests/mocks/crypto.ts`, `tests/mocks/nwc.ts`, `tests/mocks/lightning-tools.ts`, `.github/workflows/test.yml` | Testing infrastructure, mocks, patterns |
+| 03-shared-types | `src/types/index.ts` | Types, interfaces, type guards, constants, SDK re-exports |
+| 04-shared-components | `src/components/ui/Button.tsx`, `src/components/ui/Input.tsx`, `src/components/ui/Card.tsx`, `src/components/ui/Badge.tsx`, `src/components/ui/Spinner.tsx`, `src/components/ui/QRCode.tsx`, `src/components/ui/CopyButton.tsx`, `src/components/ui/index.ts` | UI primitives (Button, Input, Card, Badge, Spinner, QRCode, CopyButton) |
+| 05-wallet-context | `src/context/WalletContext.tsx`, `src/hooks/useWallet.ts`, `src/hooks/useWalletActions.ts`, `src/hooks/useNWCClient.ts`, `src/hooks/useBalance.ts`, `src/hooks/useInvoice.ts`, `src/hooks/usePayment.ts`, `src/hooks/useBudget.ts`, `src/hooks/useFiatRate.ts`, `src/hooks/index.ts`, `src/components/wallet/WalletCard.tsx`, `src/components/wallet/WalletConnect.tsx`, `src/components/wallet/BalanceDisplay.tsx` | WalletContext, WalletProvider, wallet hooks, wallet components |
+| 06-layout | `src/App.tsx`, `src/components/layout/Layout.tsx`, `src/components/layout/Sidebar.tsx`, `src/components/layout/ScenarioPage.tsx`, `src/components/transaction/TransactionLog.tsx`, `src/hooks/useTransactionLog.ts` | Layout, Sidebar, ScenarioPage, TransactionLog, useTransactionLog hook |
+| 15-backend | `server/index.ts`, `server/config.ts`, `server/routes/demo.ts` | Express server, config, demo wallet endpoints |
+| 16-testing-strategy | `tests/setup.ts`, `tests/mocks/crypto.ts`, `tests/mocks/nwc.ts`, `tests/mocks/lightning-tools.ts`, `.github/workflows/test.yml` | Testing infrastructure, mocks, patterns |
 
 ## Scenario Routes
 
 | Spec | Route | Page Directory |
 |------|-------|----------------|
-| 06-scenario-1-simple-payment | `/simple-payment` | `src/pages/1-SimplePayment/` |
-| 07-scenario-2-lightning-address | `/2-lightning-address` | `src/pages/2-LightningAddress/` |
-| 08-scenario-3-notifications | `/notifications` | `src/pages/3-Notifications/` |
-| 09-scenario-4-hold-invoice | `/hold-invoice` | `src/pages/4-HoldInvoice/` |
-| 10-scenario-5-proof-of-payment | `/proof-of-payment` | `src/pages/5-ProofOfPayment/` |
-| 11-scenario-6-transaction-history | `/transaction-history` | `src/pages/6-TransactionHistory/` |
-| 12-scenario-7-nostr-zap | `/7-nostr-zap` | `src/pages/7-NostrZap/` |
-| 13-scenario-8-fiat-conversion | `/fiat-conversion` | `src/pages/8-FiatConversion/` |
+| 07-scenario-1-simple-payment | `/simple-payment` | `src/pages/1-SimplePayment/` |
+| 08-scenario-2-lightning-address | `/2-lightning-address` | `src/pages/2-LightningAddress/` |
+| 09-scenario-3-notifications | `/notifications` | `src/pages/3-Notifications/` |
+| 10-scenario-4-hold-invoice | `/hold-invoice` | `src/pages/4-HoldInvoice/` |
+| 11-scenario-5-proof-of-payment | `/proof-of-payment` | `src/pages/5-ProofOfPayment/` |
+| 12-scenario-6-transaction-history | `/transaction-history` | `src/pages/6-TransactionHistory/` |
+| 13-scenario-7-nostr-zap | `/7-nostr-zap` | `src/pages/7-NostrZap/` |
+| 14-scenario-8-fiat-conversion | `/fiat-conversion` | `src/pages/8-FiatConversion/` |
 
 ## Available by Spec
 
@@ -72,20 +72,20 @@
 |------|-------------|----------|
 | 00 | — | Documentation only (architecture reference) |
 | 01 | `tests/utils/test-wallet` | Project config, test setup, test wallet utilities |
-| 02 | `@/types` | Types, interfaces, type guards, constants, SDK re-exports |
-| 03 | `@/components/ui` | UI primitives (Button, Input, Card, Badge, Spinner, QRCode, CopyButton) |
-| 04 | `@/context/WalletContext`, `@/hooks`, `@/components/wallet/*` | WalletContext, WalletProvider, wallet hooks, wallet components |
-| 05 | `@/components/layout/*`, `@/components/transaction/TransactionLog`, `@/hooks/useTransactionLog` | Layout, Sidebar, ScenarioPage, TransactionLog |
-| 06 | — | Scenario page (no shared exports) |
-| 07 | `@/hooks/useLightningAddressPayment` | Lightning Address payment hook |
-| 08 | `@/hooks/useNotifications` | Real-time notification subscription hook |
-| 09 | `@/hooks/useHoldInvoice`, `@/lib/crypto` | Hold invoice hook, crypto utilities |
-| 10 | — | Scenario page (no shared exports) |
-| 11 | `@/hooks/useTransactions` | Transaction listing with pagination |
-| 12 | `@/hooks/useZap` | Nostr zap payment hook |
-| 13 | — | Scenario page (no shared exports) |
-| 14 | `server/config`, `server/routes/demo` | Express server, config, demo endpoints |
-| 15 | `tests/mocks/*` | Testing infrastructure, mocks, patterns |
+| 03 | `@/types` | Types, interfaces, type guards, constants, SDK re-exports |
+| 04 | `@/components/ui` | UI primitives (Button, Input, Card, Badge, Spinner, QRCode, CopyButton) |
+| 05 | `@/context/WalletContext`, `@/hooks`, `@/components/wallet/*` | WalletContext, WalletProvider, wallet hooks, wallet components |
+| 06 | `@/components/layout/*`, `@/components/transaction/TransactionLog`, `@/hooks/useTransactionLog` | Layout, Sidebar, ScenarioPage, TransactionLog |
+| 07 | — | Scenario page (no shared exports) |
+| 08 | `@/hooks/useLightningAddressPayment` | Lightning Address payment hook |
+| 09 | `@/hooks/useNotifications` | Real-time notification subscription hook |
+| 10 | `@/hooks/useHoldInvoice`, `@/lib/crypto` | Hold invoice hook, crypto utilities |
+| 11 | — | Scenario page (no shared exports) |
+| 12 | `@/hooks/useTransactions` | Transaction listing with pagination |
+| 13 | `@/hooks/useZap` | Nostr zap payment hook |
+| 14 | — | Scenario page (no shared exports) |
+| 15 | `server/config`, `server/routes/demo` | Express server, config, demo endpoints |
+| 16 | `tests/mocks/*` | Testing infrastructure, mocks, patterns |
 
 *For complete export lists, read the referenced spec file.*
 
@@ -96,7 +96,7 @@ Specs are implemented in numerical order. When implementing spec N:
 - **You may NOT import from** specs where number >= N (they don't exist yet)
 - **For spec 01**: No imports available - this is the foundation spec
 
-Example: Implementing spec 06 means you can use imports from specs 02, 03, 04, 05.
+Example: Implementing spec 07 means you can use imports from specs 03, 04, 05, 06.
 
 ## Coding Standards
 

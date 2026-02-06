@@ -1,4 +1,4 @@
-# Specification 11: Scenario 6 - Transaction History
+# Specification 12: Scenario 6 - Transaction History
 
 ## Purpose
 
@@ -6,8 +6,8 @@ Display and filter transaction history for both wallets, demonstrating the `list
 
 ## Dependencies
 
-- [02-shared-types.md](./02-shared-types.md) - Transaction types
-- [04-wallet-context.md](./04-wallet-context.md) - NWC client access
+- [03-shared-types.md](./03-shared-types.md) - Transaction types
+- [05-wallet-context.md](./05-wallet-context.md) - NWC client access
 
 ## User Story
 
@@ -641,5 +641,5 @@ src/pages/6-TransactionHistory/
 
 ## Related Specifications
 
-- [02-shared-types.md](./02-shared-types.md) - Transaction types
-- [04-wallet-context.md](./04-wallet-context.md) - NWC client access
+- [03-shared-types.md](./03-shared-types.md) - Transaction types
+- [05-wallet-context.md](./05-wallet-context.md) - NWC client access

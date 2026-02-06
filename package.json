@@ -11,9 +11,20 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
+    "test:integration": "vitest run tests/integration",
     "test:e2e": "playwright test",
     "lint": "eslint . --ext ts,tsx",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "setup:services": "./scripts/install-services.sh",
+    "dev:systemd": "./scripts/dev.sh start",
+    "dev:systemd:stop": "./scripts/dev.sh stop",
+    "dev:systemd:status": "./scripts/dev.sh status",
+    "dev:systemd:logs": "./scripts/dev.sh logs",
+    "test:systemd": "./scripts/test.sh start",
+    "test:systemd:stop": "./scripts/test.sh stop",
+    "cleanup:processes": "./scripts/cleanup.sh",
+    "health": "./scripts/health.sh",
+    "diagnose": "./scripts/diagnose.sh"
   },
   "dependencies": {
     "@getalby/lightning-tools": "^6.1.0",
