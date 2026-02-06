@@ -24,7 +24,7 @@ The next run of the alignment prompt will verify `fixing` specs and mark them `n
 | 10-scenario-5-proof-of-payment.md | no fixes | Verified: all types, imports, patterns consistent with specs 06-09 |
 | 11-scenario-6-transaction-history.md | no fixes | Verified: file structure, component naming, imports, types all consistent with specs 06-10 |
 | 12-scenario-7-nostr-zap.md | fixing | Added hook export instruction to match specs 09-11 pattern |
-| 13-scenario-8-fiat-conversion.md | pending | |
+| 13-scenario-8-fiat-conversion.md | no fixes | Verified: file structure, imports (mixed pattern), hooks from spec 04, SDK usage all consistent |
 
 ## Reference Documents
 - PRD.md
