@@ -65,7 +65,7 @@ Display and filter transaction history for both wallets, demonstrating the `list
 
 ## Page Component
 
-**File**: `src/pages/6-TransactionHistory/TransactionHistory.tsx`
+**File**: `src/pages/6-TransactionHistory/index.tsx`
 
 ```typescript
 import { useState } from 'react';
@@ -76,7 +76,7 @@ import { useTransactionLog } from '@/hooks/useTransactionLog';
 import { useWallet } from '@/hooks';
 import type { Transaction } from '@/types';
 
-export default function TransactionHistoryPage() {
+export default function TransactionHistory() {
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
   const { entries, addLog } = useTransactionLog();
   const aliceWallet = useWallet('alice');
@@ -619,8 +619,7 @@ describe('useTransactions', () => {
 
 ```
 src/pages/6-TransactionHistory/
-├── index.tsx                    # Re-export
-├── TransactionHistory.tsx       # Page implementation (TransactionHistoryPage)
+├── index.tsx                    # Page component (TransactionHistory)
 └── components/
     ├── TransactionList.tsx      # Transaction list with filters
     └── TransactionDetails.tsx   # Expanded transaction view
