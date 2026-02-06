@@ -17,14 +17,14 @@ The next run of the alignment prompt will verify `fixing` specs and mark them `n
 
 | Spec | Status | Notes |
 |------|--------|-------|
-| 07-scenario-1-simple-payment.md | no fixes | Verified against reference specs |
-| 08-scenario-2-lightning-address.md | no fixes | Verified: imports, file structure, types consistent |
-| 09-scenario-3-notifications.md | no fixes | Verified: types, imports, file structure, SDK usage consistent |
-| 10-scenario-4-hold-invoice.md | no fixes | Verified: types, imports, file structure consistent with 07-09 |
-| 11-scenario-5-proof-of-payment.md | no fixes | Verified: all types, imports, patterns consistent with specs 07-10 |
-| 12-scenario-6-transaction-history.md | no fixes | Verified: file structure, component naming, imports, types all consistent with specs 07-11 |
-| 13-scenario-7-nostr-zap.md | no fixes | Verified: hook export instruction added, file structure, imports, all patterns consistent |
-| 14-scenario-8-fiat-conversion.md | no fixes | Verified: file structure, imports (mixed pattern), hooks from spec 05, SDK usage all consistent |
+| 07-scenario-1-simple-payment.md | no fixes | Verified: types, components, hooks, routes, NWC API all consistent |
+| 08-scenario-2-lightning-address.md | no fixes | Verified: types, components, hooks, routes, Lightning Tools API all consistent |
+| 09-scenario-3-notifications.md | fixing | Fixed metadata snake_case→camelCase mapping in useNotifications hook |
+| 10-scenario-4-hold-invoice.md | no fixes | Verified: types, components, hooks, routes, hold invoice API all consistent |
+| 11-scenario-5-proof-of-payment.md | no fixes | Verified: types, components, hooks, routes, bolt11 API all consistent |
+| 12-scenario-6-transaction-history.md | fixing | Fixed metadata snake_case→camelCase mapping + removed unused imports |
+| 13-scenario-7-nostr-zap.md | no fixes | Verified: types, components, hooks, routes, zap API all consistent |
+| 14-scenario-8-fiat-conversion.md | no fixes | Verified: types, components, hooks, routes, fiat API all consistent |
 
 ## Reference Documents
 - PRD.md
