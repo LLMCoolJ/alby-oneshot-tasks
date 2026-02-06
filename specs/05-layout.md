@@ -258,7 +258,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           {/* Footer links */}
           <div className="border-t border-slate-200 p-4 space-y-2">
             <a
-              href={CONSTANTS.MUTINYNET_FAUCET_URL}
+              href={CONSTANTS.FAUCET_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm text-slate-600 hover:text-bitcoin"

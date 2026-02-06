@@ -619,7 +619,7 @@ export const CONSTANTS = {
   MAX_PAYMENT_SATS: 10_000_000, // 10M sats
 
   // Demo
-  MUTINYNET_FAUCET_URL: 'https://faucet.mutinynet.com',
+  FAUCET_URL: 'https://faucet.nwc.dev',
 } as const;
 
 /**

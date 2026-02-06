@@ -158,8 +158,8 @@ demoRouter.get('/wallets', (req, res) => {
         name: 'Bob',
       },
     },
-    faucetUrl: 'https://faucet.mutinynet.com',
-    instructions: 'Demo wallets are pre-configured for testing on Mutinynet.',
+    faucetUrl: 'https://faucet.nwc.dev',
+    instructions: 'Demo wallets are pre-configured testing wallets from faucet.nwc.dev.',
   });
 });
 

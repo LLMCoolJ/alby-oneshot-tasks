@@ -233,7 +233,7 @@ All wallet operations use NWC (Nostr Wallet Connect) via `@getalby/sdk`, ensurin
 - **Fiat**: Optional dual display with real-time conversion
 
 ### 4. Testnet Only
-The application is designed for testnet (Mutinynet/Signet) to allow safe experimentation without real funds.
+The application is designed for testnet (faucet.nwc.dev testing wallets) to allow safe experimentation without real funds.
 
 ### 5. Component-Driven Design
 UI built with reusable, tested components that can be composed for each scenario.

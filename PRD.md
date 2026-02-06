@@ -10,7 +10,7 @@ A React application demonstrating Bitcoin Lightning Network capabilities using t
 - **Backend:** Express.js (for NWC connection handling)
 - **Styling:** Tailwind CSS (simple, utility-first)
 - **Lightning:** `@getalby/sdk` (NWC Client) + `@getalby/lightning-tools`
-- **Network:** Testnet (Mutinynet or similar)
+- **Network:** Testnet (faucet.nwc.dev testing wallets)
 
 ## Architecture
 
@@ -190,10 +190,10 @@ A React application demonstrating Bitcoin Lightning Network capabilities using t
 
 ## Testnet Setup
 
-### Option 1: Mutinynet (Recommended)
-- Signet-based testnet with faucet
-- Works with Alby Hub testnet instances
-- Faucet: https://faucet.mutinynet.com
+### Option 1: faucet.nwc.dev Testing Wallets (Recommended)
+- Instant testing wallets with a single API request
+- No setup required - wallets are pre-funded
+- Faucet: https://faucet.nwc.dev
 
 ### Option 2: User's Own Testnet Wallet
 - Allow users to paste their own NWC connection string
@@ -358,7 +358,7 @@ Always invoke `/alby-agent-skill` before implementing Lightning-related features
 - [Lightning Network Paper](https://lightning.network/lightning-network-paper.pdf)
 - [BOLT-11 Invoice Spec](https://github.com/lightning/bolts/blob/master/11-payment-encoding.md)
 - [LNURL Spec](https://github.com/lnurl/luds)
-- [Mutinynet Faucet](https://faucet.mutinynet.com)
+- [Testing Wallet Faucet](https://faucet.nwc.dev)
 
 ## Research Sources
 
