@@ -800,8 +800,99 @@ journalctl --user -u lightning-wallet-dev.service --since today
 journalctl --user -u lightning-wallet-dev.service -f -n 50
 ```
 
+## Implementation Notes (Common Pitfalls)
+
+These lessons were learned during initial implementation and should be watched for in any re-implementation:
+
+### 1. Canonical Constants — Define Once, Reference Everywhere
+
+The following values must be consistent across ALL files (service templates, helper scripts, spec prose, tests, package.json):
+
+| Constant | Value | Where Referenced |
+|----------|-------|------------------|
+| Backend port | `3001` | server/config.ts, all scripts, service templates, tests |
+| Frontend port | `5173` | vite config, all scripts, tests |
+| Dev service name | `alby-demo-dev.service` | service template filename, all scripts, package.json |
+| Test service name | `alby-demo-test.service` | service template filename, all scripts, package.json |
+| Template variables | `{{PROJECT_ROOT}}`, `{{USER}}`, `{{NVM_DIR}}` | service templates, install script |
+
+Port numbers and service names easily drift when different files are written independently. Always grep all scripts/templates for port references before finalizing.
+
+### 2. Systemd User Services vs System Services
+
+User services (`systemctl --user`) have different conventions than system services:
+- Use `WantedBy=default.target`, **NOT** `WantedBy=multi-user.target`
+- `multi-user.target` is for system-wide services and will cause silent failures for user units
+- The `User=` directive is unnecessary in user services (it's always the current user)
+
+### 3. NVM-Managed Node.js Requires Shell Wrapping
+
+When Node.js is installed via nvm, `npm` and `node` are not on the system PATH. Systemd services cannot find them with a bare `ExecStart=/usr/bin/npm ...`.
+
+**Must use**:
+```ini
+ExecStart=/bin/bash -c 'source {{NVM_DIR}}/nvm.sh && npm run dev'
+```
+
+**Will fail silently**:
+```ini
+ExecStart=/usr/bin/npm run dev
+```
+
+### 4. Template Variable Substitution Must Be Exhaustive
+
+The install script must substitute ALL template variables. A partial substitution (e.g., replacing `{{PROJECT_ROOT}}` but forgetting `{{NVM_DIR}}`) will produce a service file that appears valid but fails at runtime with cryptic errors.
+
+The install script should substitute all three in a single `sed` pipeline:
+```bash
+sed -e "s|{{PROJECT_ROOT}}|$PROJECT_DIR|g" \
+    -e "s|{{USER}}|$USER|g" \
+    -e "s|{{NVM_DIR}}|$NVM_DIR|g" \
+    "$template" > "$service_file"
+```
+
+### 5. Logging Strategy: Choose File-Based OR Journal, Not Both
+
+Two approaches exist — pick one and be consistent:
+
+| Approach | Service Config | Script Access |
+|----------|---------------|---------------|
+| **File-based** (chosen) | `StandardOutput=append:{{PROJECT_ROOT}}/logs/dev-stdout.log` | `tail -f logs/dev-stdout.log` |
+| **Journal-based** | `StandardOutput=journal` | `journalctl --user -u service-name -f` |
+
+If using file-based logging, the `logs` and `errors` commands in helper scripts must use `tail -f` on log files. If using journal-based, they must use `journalctl`. Mixing the two means one approach silently shows nothing.
+
+### 6. Helper Scripts: Shell (`.sh`) vs Node (`.js`)
+
+Shell scripts are preferred for process management because:
+- They work without Node.js being on PATH (the whole point is managing Node processes)
+- `lsof`, `pgrep`, `kill`, `systemctl` are native shell operations
+- No module resolution or ESM issues
+
+Package.json scripts should reference `./scripts/dev.sh start`, not `node scripts/dev.js`.
+
+### 7. Script `errors` Command
+
+The `dev.sh` and `test.sh` scripts should support an `errors` subcommand in addition to `logs`, since systemd separates stdout and stderr into different log files. Forgetting this means stderr output is invisible during debugging.
+
+### 8. Stop Command Should Verify Port Release
+
+After `systemctl --user stop`, ports may not be immediately released (especially if child processes ignore SIGTERM). The `stop` subcommand should verify ports are actually freed and call the cleanup script as a fallback:
+
+```bash
+stop_server() {
+    systemctl --user stop "$SERVICE_NAME"
+    sleep 1
+    # Verify ports are actually released
+    if lsof -ti:5173 || lsof -ti:3001; then
+        echo "Ports still in use, running cleanup..."
+        "$SCRIPT_DIR/cleanup.sh"
+    fi
+}
+```
+
 ## Related Specifications
 
 - [01-project-setup.md](./01-project-setup.md) - Project configuration and npm scripts
-- [14-backend.md](./14-backend.md) - Express server implementation
-- [15-testing-strategy.md](./15-testing-strategy.md) - Testing approach
+- [15-backend.md](./15-backend.md) - Express server implementation
+- [16-testing-strategy.md](./16-testing-strategy.md) - Testing approach
