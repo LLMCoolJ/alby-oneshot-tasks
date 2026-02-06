@@ -199,6 +199,7 @@ import { Button, Badge, CopyButton } from '@/components/ui';
 import { usePayment } from '@/hooks';
 import { CONSTANTS } from '@/types';
 import type { Nip47Transaction } from '@getalby/sdk/nwc';
+import type { PaymentResult } from '@/types';
 
 interface PayAndProveProps {
   invoice: Nip47Transaction;
