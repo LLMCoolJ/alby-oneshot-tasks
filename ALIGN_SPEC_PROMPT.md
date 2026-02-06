@@ -1,6 +1,6 @@
 # Spec Alignment Prompt
 
-Run this prompt to align scenario specs one at a time.
+Run this prompt to align scenario specs one at a time. Use agent teams & tasks to do the work in parallel
 
 ---
 
