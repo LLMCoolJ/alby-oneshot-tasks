@@ -22,7 +22,7 @@ The next run of the alignment prompt will verify `fixing` specs and mark them `n
 | 08-scenario-3-notifications.md | no fixes | Verified: types, imports, file structure, SDK usage consistent |
 | 09-scenario-4-hold-invoice.md | no fixes | Verified: types, imports, file structure consistent with 06-08 |
 | 10-scenario-5-proof-of-payment.md | no fixes | Verified: all types, imports, patterns consistent with specs 06-09 |
-| 11-scenario-6-transaction-history.md | fixing | Fixed file structure and component naming to match specs 06-10 pattern |
+| 11-scenario-6-transaction-history.md | no fixes | Verified: file structure, component naming, imports, types all consistent with specs 06-10 |
 | 12-scenario-7-nostr-zap.md | pending | |
 | 13-scenario-8-fiat-conversion.md | pending | |
 
