@@ -208,8 +208,8 @@ A React application demonstrating Bitcoin Lightning Network capabilities using t
 
 ```env
 # Server
-PORT=3001
-VITE_API_URL=http://localhost:3001
+PORT=3741
+VITE_API_URL=http://localhost:3741
 
 # Demo Wallets (optional - for demo mode, VITE_ prefix for client access)
 VITE_ALICE_NWC_URL=nostr+walletconnect://...

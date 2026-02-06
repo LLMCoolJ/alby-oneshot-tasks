@@ -18,7 +18,7 @@ Define a systemd-based process management system that prevents orphaned processe
 │  ┌───────────────────────────────────────────────────────────────────┐  │
 │  │  lightning-wallet-dev.service                                      │  │
 │  │  - Runs: npm run dev (via concurrently)                           │  │
-│  │  - Child processes: Vite (5173) + Express (3001)                  │  │
+│  │  - Child processes: Vite (5741) + Express (3741)                  │  │
 │  │  - KillMode=control-group (kills all descendants)                 │  │
 │  └───────────────────────────────────────────────────────────────────┘  │
 │                                                                          │
@@ -65,8 +65,8 @@ TimeoutStopSec=30
 
 # Environment
 Environment=NODE_ENV=development
-Environment=PORT=3001
-Environment=VITE_API_URL=http://localhost:3001
+Environment=PORT=3741
+Environment=VITE_API_URL=http://localhost:3741
 
 # Logging
 StandardOutput=journal
@@ -195,7 +195,7 @@ main();
 #!/usr/bin/env node
 import { execSync } from 'child_process';
 
-const PORTS = [3001, 5173]; // Express and Vite ports
+const PORTS = [3741, 5741]; // Express and Vite ports
 
 function findProcessOnPort(port) {
   try {
@@ -257,8 +257,8 @@ import http from 'http';
 
 const SERVICES = ['lightning-wallet-dev', 'lightning-wallet-test'];
 const ENDPOINTS = [
-  { name: 'Express Backend', url: 'http://localhost:3001/health' },
-  { name: 'Vite Dev Server', url: 'http://localhost:5173/' },
+  { name: 'Express Backend', url: 'http://localhost:3741/health' },
+  { name: 'Vite Dev Server', url: 'http://localhost:5741/' },
 ];
 
 function checkService(serviceName) {
@@ -320,7 +320,7 @@ main();
 #!/usr/bin/env node
 import { execSync } from 'child_process';
 
-const PORTS = [3001, 5173];
+const PORTS = [3741, 5741];
 
 function findProcessDetails(port) {
   try {
@@ -463,8 +463,8 @@ systemd (PID 1)
 └── lightning-wallet-dev.service
     └── npm run dev (shell)
         └── concurrently
-            ├── npm run dev:client → vite (port 5173)
-            └── npm run dev:server → tsx watch server/index.ts (port 3001)
+            ├── npm run dev:client → vite (port 5741)
+            └── npm run dev:server → tsx watch server/index.ts (port 3741)
 ```
 
 When the service is stopped:
@@ -484,7 +484,7 @@ npm run setup:services
 npm run dev:systemd
 
 # 3. Open browser
-# http://localhost:5173
+# http://localhost:5741
 ```
 
 ### Daily Development
@@ -691,11 +691,11 @@ describe('Systemd Lifecycle', () => {
     await new Promise((resolve) => setTimeout(resolve, 5000));
 
     // Check Vite
-    const viteHealthy = await checkEndpoint('http://localhost:5173');
+    const viteHealthy = await checkEndpoint('http://localhost:5741');
     expect(viteHealthy).toBe(true);
 
     // Check Express
-    const expressHealthy = await checkEndpoint('http://localhost:3001/health');
+    const expressHealthy = await checkEndpoint('http://localhost:3741/health');
     expect(expressHealthy).toBe(true);
   }, 30000);
 
@@ -720,11 +720,11 @@ describe('Systemd Lifecycle', () => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     // Check ports are free
-    const port3001Free = await isPortFree(3001);
-    const port5173Free = await isPortFree(5173);
+    const port3741Free = await isPortFree(3741);
+    const port5741Free = await isPortFree(5741);
 
-    expect(port3001Free).toBe(true);
-    expect(port5173Free).toBe(true);
+    expect(port3741Free).toBe(true);
+    expect(port5741Free).toBe(true);
   }, 60000);
 });
 
@@ -761,7 +761,7 @@ function isPortFree(port: number): Promise<boolean> {
 - [ ] Both Vite and Express servers start correctly
 - [ ] Services can be stopped via `npm run dev:systemd:stop`
 - [ ] All child processes are terminated when service stops
-- [ ] No orphaned processes remain on ports 3001 or 5173
+- [ ] No orphaned processes remain on ports 3741 or 5741
 - [ ] Health check script reports accurate status
 - [ ] Diagnose script identifies port conflicts
 - [ ] Cleanup script can kill orphaned processes
@@ -810,8 +810,8 @@ The following values must be consistent across ALL files (service templates, hel
 
 | Constant | Value | Where Referenced |
 |----------|-------|------------------|
-| Backend port | `3001` | server/config.ts, all scripts, service templates, tests |
-| Frontend port | `5173` | vite config, all scripts, tests |
+| Backend port | `3741` | server/config.ts, all scripts, service templates, tests |
+| Frontend port | `5741` | vite config, all scripts, tests |
 | Dev service name | `alby-demo-dev.service` | service template filename, all scripts, package.json |
 | Test service name | `alby-demo-test.service` | service template filename, all scripts, package.json |
 | Template variables | `{{PROJECT_ROOT}}`, `{{USER}}`, `{{NVM_DIR}}` | service templates, install script |
@@ -884,7 +884,7 @@ stop_server() {
     systemctl --user stop "$SERVICE_NAME"
     sleep 1
     # Verify ports are actually released
-    if lsof -ti:5173 || lsof -ti:3001; then
+    if lsof -ti:5741 || lsof -ti:3741; then
         echo "Ports still in use, running cleanup..."
         "$SCRIPT_DIR/cleanup.sh"
     fi

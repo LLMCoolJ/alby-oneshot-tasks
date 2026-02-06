@@ -9,9 +9,9 @@ const mockConfig = {
     alice: 'nostr+walletconnect://alice-secret-url',
     bob: 'nostr+walletconnect://bob-secret-url',
   } as { alice: string | null; bob: string | null },
-  port: 3001,
+  port: 3741,
   isDev: true,
-  corsOrigins: ['http://localhost:5173'],
+  corsOrigins: ['http://localhost:5741'],
 };
 
 // Create a router factory that mimics the actual demo router implementation

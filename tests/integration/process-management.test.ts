@@ -6,7 +6,7 @@ import { join } from 'path';
 const PROJECT_ROOT = join(__dirname, '../..');
 const SERVICE_NAME_DEV = 'alby-demo-dev.service';
 const SERVICE_NAME_TEST = 'alby-demo-test.service';
-const SERVER_PORT = 3001;
+const SERVER_PORT = 3741;
 const TEST_TIMEOUT = 30000; // 30 seconds for service operations
 
 /**

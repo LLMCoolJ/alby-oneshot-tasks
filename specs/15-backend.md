@@ -17,7 +17,7 @@ Define the Express.js backend server that can optionally handle server-side NWC 
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────┐   │
 │  │                    Express.js Server                             │   │
-│  │                    Port: 3001                                    │   │
+│  │                    Port: 3741                                    │   │
 │  └─────────────────────────────────────────────────────────────────┘   │
 │                              │                                          │
 │          ┌───────────────────┼───────────────────┐                     │
@@ -100,11 +100,11 @@ app.listen(config.port, () => {
 
 ```typescript
 export const config = {
-  port: parseInt(process.env.PORT || '3001', 10),
+  port: parseInt(process.env.PORT || '3741', 10),
   isDev: process.env.NODE_ENV !== 'production',
 
   corsOrigins: process.env.CORS_ORIGINS?.split(',') || [
-    'http://localhost:5173',
+    'http://localhost:5741',
     'http://localhost:3000',
   ],
 
@@ -209,9 +209,9 @@ server/
 
 ```env
 # Server
-PORT=3001
+PORT=3741
 NODE_ENV=development
-CORS_ORIGINS=http://localhost:5173
+CORS_ORIGINS=http://localhost:5741
 
 # Demo Mode
 ENABLE_DEMO_MODE=true

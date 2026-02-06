@@ -208,8 +208,8 @@ The specifications are ordered to build upon each other:
 
 ```env
 # Server
-PORT=3001
-VITE_API_URL=http://localhost:3001
+PORT=3741
+VITE_API_URL=http://localhost:3741
 
 # Demo Wallets (optional - for demo mode)
 VITE_ALICE_NWC_URL=nostr+walletconnect://...

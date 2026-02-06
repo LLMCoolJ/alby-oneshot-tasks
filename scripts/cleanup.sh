@@ -14,16 +14,16 @@ echo "Searching for orphaned processes..."
 FOUND_PROCESSES=false
 
 # Check ports first
-port_5173=$(lsof -ti:5173 2>/dev/null || true)
-port_3001=$(lsof -ti:3001 2>/dev/null || true)
+port_5741=$(lsof -ti:5741 2>/dev/null || true)
+port_3741=$(lsof -ti:3741 2>/dev/null || true)
 
-if [ -n "$port_5173" ]; then
+if [ -n "$port_5741" ]; then
     FOUND_PROCESSES=true
-    echo -e "${YELLOW}Port 5173 in use by PID(s): $port_5173${NC}"
+    echo -e "${YELLOW}Port 5741 in use by PID(s): $port_5741${NC}"
 fi
-if [ -n "$port_3001" ]; then
+if [ -n "$port_3741" ]; then
     FOUND_PROCESSES=true
-    echo -e "${YELLOW}Port 3001 in use by PID(s): $port_3001${NC}"
+    echo -e "${YELLOW}Port 3741 in use by PID(s): $port_3741${NC}"
 fi
 
 # Check process patterns
@@ -64,8 +64,8 @@ fi
 
 # Step 1: Kill by port (SIGTERM)
 echo "Sending SIGTERM to port processes..."
-lsof -ti:5173 2>/dev/null | xargs -r kill -TERM 2>/dev/null || true
-lsof -ti:3001 2>/dev/null | xargs -r kill -TERM 2>/dev/null || true
+lsof -ti:5741 2>/dev/null | xargs -r kill -TERM 2>/dev/null || true
+lsof -ti:3741 2>/dev/null | xargs -r kill -TERM 2>/dev/null || true
 
 # Step 2: Kill by process name pattern (SIGTERM)
 pkill -u "$USER" -f 'vite|tsx.*server|vitest' 2>/dev/null || true
@@ -74,13 +74,13 @@ pkill -u "$USER" -f 'vite|tsx.*server|vitest' 2>/dev/null || true
 sleep 2
 
 # Step 3: Force kill any remaining
-REMAINING_5173=$(lsof -ti:5173 2>/dev/null || true)
-REMAINING_3001=$(lsof -ti:3001 2>/dev/null || true)
+REMAINING_5741=$(lsof -ti:5741 2>/dev/null || true)
+REMAINING_3741=$(lsof -ti:3741 2>/dev/null || true)
 
-if [ -n "$REMAINING_5173" ] || [ -n "$REMAINING_3001" ]; then
+if [ -n "$REMAINING_5741" ] || [ -n "$REMAINING_3741" ]; then
     echo -e "${YELLOW}Some processes survived SIGTERM, sending SIGKILL...${NC}"
-    lsof -ti:5173 2>/dev/null | xargs -r kill -9 2>/dev/null || true
-    lsof -ti:3001 2>/dev/null | xargs -r kill -9 2>/dev/null || true
+    lsof -ti:5741 2>/dev/null | xargs -r kill -9 2>/dev/null || true
+    lsof -ti:3741 2>/dev/null | xargs -r kill -9 2>/dev/null || true
     pkill -9 -u "$USER" -f 'vite|tsx.*server|vitest' 2>/dev/null || true
     sleep 1
 fi
@@ -88,17 +88,17 @@ fi
 # Verify cleanup
 echo ""
 echo "Checking for remaining processes..."
-port_5173=$(lsof -ti:5173 2>/dev/null || true)
-port_3001=$(lsof -ti:3001 2>/dev/null || true)
+port_5741=$(lsof -ti:5741 2>/dev/null || true)
+port_3741=$(lsof -ti:3741 2>/dev/null || true)
 
-if [ -z "$port_5173" ]; then
-    echo -e "${GREEN}✓ Port 5173 clear${NC}"
+if [ -z "$port_5741" ]; then
+    echo -e "${GREEN}✓ Port 5741 clear${NC}"
 else
-    echo -e "${RED}⚠ Port 5173 still in use (PID: $port_5173)${NC}"
+    echo -e "${RED}⚠ Port 5741 still in use (PID: $port_5741)${NC}"
 fi
 
-if [ -z "$port_3001" ]; then
-    echo -e "${GREEN}✓ Port 3001 clear${NC}"
+if [ -z "$port_3741" ]; then
+    echo -e "${GREEN}✓ Port 3741 clear${NC}"
 else
-    echo -e "${RED}⚠ Port 3001 still in use (PID: $port_3001)${NC}"
+    echo -e "${RED}⚠ Port 3741 still in use (PID: $port_3741)${NC}"
 fi

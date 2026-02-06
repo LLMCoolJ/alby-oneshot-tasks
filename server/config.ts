@@ -1,9 +1,9 @@
 export const config = {
-  port: parseInt(process.env.PORT || '3001', 10),
+  port: parseInt(process.env.PORT || '3741', 10),
   isDev: process.env.NODE_ENV !== 'production',
 
   corsOrigins: process.env.CORS_ORIGINS?.split(',') || [
-    'http://localhost:5173',
+    'http://localhost:5741',
     'http://localhost:3000',
   ],
 

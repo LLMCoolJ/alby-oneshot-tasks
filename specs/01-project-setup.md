@@ -95,10 +95,10 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5173,
+    port: 5741,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://localhost:3741',
         changeOrigin: true,
       },
     },
@@ -222,8 +222,8 @@ export default {
 
 ```env
 # Server Configuration
-PORT=3001
-VITE_API_URL=http://localhost:3001
+PORT=3741
+VITE_API_URL=http://localhost:3741
 
 # Demo Wallet NWC URLs (optional)
 # These enable "demo mode" with pre-configured wallets
@@ -252,7 +252,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5741',
     trace: 'on-first-retry',
   },
   projects: [
@@ -271,7 +271,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:5173',
+    url: 'http://localhost:5741',
     reuseExistingServer: !process.env.CI,
   },
 });

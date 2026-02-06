@@ -136,28 +136,28 @@ fi
 # Check ports
 print_header "Port Availability"
 if command -v lsof > /dev/null 2>&1; then
-    if lsof -Pi :3001 -sTCP:LISTEN -t >/dev/null 2>&1; then
-        print_ok "Port 3001 (backend) is in use"
+    if lsof -Pi :3741 -sTCP:LISTEN -t >/dev/null 2>&1; then
+        print_ok "Port 3741 (backend) is in use"
     else
-        print_warning "Port 3001 (backend) is not in use"
+        print_warning "Port 3741 (backend) is not in use"
     fi
 
-    if lsof -Pi :5173 -sTCP:LISTEN -t >/dev/null 2>&1; then
-        print_ok "Port 5173 (frontend) is in use"
+    if lsof -Pi :5741 -sTCP:LISTEN -t >/dev/null 2>&1; then
+        print_ok "Port 5741 (frontend) is in use"
     else
-        print_warning "Port 5173 (frontend) is not in use"
+        print_warning "Port 5741 (frontend) is not in use"
     fi
 elif command -v ss > /dev/null 2>&1; then
-    if ss -ltn | grep -q :3001; then
-        print_ok "Port 3001 (backend) is in use"
+    if ss -ltn | grep -q :3741; then
+        print_ok "Port 3741 (backend) is in use"
     else
-        print_warning "Port 3001 (backend) is not in use"
+        print_warning "Port 3741 (backend) is not in use"
     fi
 
-    if ss -ltn | grep -q :5173; then
-        print_ok "Port 5173 (frontend) is in use"
+    if ss -ltn | grep -q :5741; then
+        print_ok "Port 5741 (frontend) is in use"
     else
-        print_warning "Port 5173 (frontend) is not in use"
+        print_warning "Port 5741 (frontend) is not in use"
     fi
 else
     print_warning "Cannot check ports (lsof and ss not available)"
@@ -166,13 +166,13 @@ fi
 # Check HTTP endpoints
 print_header "HTTP Endpoints"
 if command -v curl > /dev/null 2>&1; then
-    if curl -s -f http://localhost:3001/health > /dev/null 2>&1; then
+    if curl -s -f http://localhost:3741/health > /dev/null 2>&1; then
         print_ok "Backend health endpoint responding"
     else
         print_warning "Backend health endpoint not responding"
     fi
 
-    if curl -s -f http://localhost:5173 > /dev/null 2>&1; then
+    if curl -s -f http://localhost:5741 > /dev/null 2>&1; then
         print_ok "Frontend responding"
     else
         print_warning "Frontend not responding"

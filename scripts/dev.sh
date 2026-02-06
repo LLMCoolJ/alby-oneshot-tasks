@@ -51,8 +51,8 @@ start_server() {
             echo -e "${GREEN}✓ Development server started successfully${NC}"
             echo ""
             echo "Server is running at:"
-            echo "  - Frontend: http://localhost:5173"
-            echo "  - Backend:  http://localhost:3001"
+            echo "  - Frontend: http://localhost:5741"
+            echo "  - Backend:  http://localhost:3741"
             echo ""
             echo "To view logs: $0 logs"
             echo "To view errors: $0 errors"
@@ -73,9 +73,9 @@ stop_server() {
 
         # Verify ports are released
         sleep 1
-        local port_5173=$(lsof -ti:5173 2>/dev/null || true)
-        local port_3001=$(lsof -ti:3001 2>/dev/null || true)
-        if [ -n "$port_5173" ] || [ -n "$port_3001" ]; then
+        local port_5741=$(lsof -ti:5741 2>/dev/null || true)
+        local port_3741=$(lsof -ti:3741 2>/dev/null || true)
+        if [ -n "$port_5741" ] || [ -n "$port_3741" ]; then
             echo -e "${YELLOW}⚠ Some ports still in use, running cleanup...${NC}"
             "$SCRIPT_DIR/cleanup.sh"
         fi
@@ -129,17 +129,17 @@ show_status() {
 
     # Port bindings
     echo ""
-    local port_5173=$(lsof -ti:5173 2>/dev/null || true)
-    local port_3001=$(lsof -ti:3001 2>/dev/null || true)
-    if [ -n "$port_5173" ]; then
-        echo -e "Port 5173: ${GREEN}listening (PID: $port_5173)${NC}"
+    local port_5741=$(lsof -ti:5741 2>/dev/null || true)
+    local port_3741=$(lsof -ti:3741 2>/dev/null || true)
+    if [ -n "$port_5741" ]; then
+        echo -e "Port 5741: ${GREEN}listening (PID: $port_5741)${NC}"
     else
-        echo -e "Port 5173: ${RED}not listening${NC}"
+        echo -e "Port 5741: ${RED}not listening${NC}"
     fi
-    if [ -n "$port_3001" ]; then
-        echo -e "Port 3001: ${GREEN}listening (PID: $port_3001)${NC}"
+    if [ -n "$port_3741" ]; then
+        echo -e "Port 3741: ${GREEN}listening (PID: $port_3741)${NC}"
     else
-        echo -e "Port 3001: ${RED}not listening${NC}"
+        echo -e "Port 3741: ${RED}not listening${NC}"
     fi
 
     # Uptime
