@@ -127,11 +127,11 @@ export default function TransactionHistory() {
 **File**: `src/pages/6-TransactionHistory/components/TransactionList.tsx`
 
 ```typescript
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Badge, Spinner } from '@/components/ui';
 import { useTransactions } from '@/hooks/useTransactions';
 import { CONSTANTS } from '@/types';
-import type { WalletId, Transaction, TransactionType } from '@/types';
+import type { WalletId, Transaction } from '@/types';
 
 interface TransactionListProps {
   walletId: WalletId;
@@ -434,7 +434,12 @@ function mapTransaction(tx: Nip47Transaction): Transaction {
     createdAt: new Date(tx.created_at * 1000),
     settledAt: tx.settled_at ? new Date(tx.settled_at * 1000) : null,
     expiresAt: tx.expires_at ? new Date(tx.expires_at * 1000) : null,
-    metadata: tx.metadata,
+    metadata: tx.metadata ? {
+      comment: tx.metadata.comment,
+      payerData: tx.metadata.payer_data,
+      recipientData: tx.metadata.recipient_data,
+      nostr: tx.metadata.nostr,
+    } : undefined,
   };
 }
 
