@@ -364,7 +364,12 @@ export function useNotifications(
       createdAt: new Date(tx.created_at * 1000),
       settledAt: tx.settled_at ? new Date(tx.settled_at * 1000) : null,
       expiresAt: tx.expires_at ? new Date(tx.expires_at * 1000) : null,
-      metadata: tx.metadata,
+      metadata: tx.metadata ? {
+        comment: tx.metadata.comment,
+        payerData: tx.metadata.payer_data,
+        recipientData: tx.metadata.recipient_data,
+        nostr: tx.metadata.nostr,
+      } : undefined,
     };
 
     const event: NotificationEvent = {
